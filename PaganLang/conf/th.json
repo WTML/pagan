@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 543,
+      "months": {
+        "mon_gen": ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
+        "month_gen": ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+        "Month": ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+        "Month_gen": ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "เมื่อวานนี้  {hour}:{minute} น. {am_pm}"], 
+        ["d", 0, 1, "วันนี้ {hour}:{minute} น. {am_pm}"], 
+        ["d", 1, 2, "พรุ่งนี้ {hour}:{minute} น. {am_pm}"], 
+        "{hour}:{minute} {am_pm} น. เมื่อ {day} {mon_gen} พ.ศ. {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "เมื่อวานนี้ {num_hour}:{minute} {am_pm} น."], 
+        ["d", 0, 1, "วันนี้ {num_hour}:{minute} {am_pm} น."], 
+        ["d", 1, 2, "พรุ่งนี้  {num_hour}:{minute} {am_pm} น."], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} {am_pm} น."
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "เมื่อวานนี้ {hour}:{minute}:{second} {am_pm} น."], 
+        ["d", 0, 1, "วันนี้{hour}:{minute}:{second} {am_pm} น."], 
+        ["d", 1, 2, "พรุ่งนี้ {hour}:{minute}:{second} {am_pm} น."], 
+        "เมื่อ {hour}:{minute}:{second} น. {am_pm} เมื่อ {day} {mon_gen} {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "เมื่อ {day} {month_gen} พ.ศ. {year} เมื่อ {hour}.{minute} {am_pm} น."], 
+        ["y", 1, null, "เมื่อ {day} {month_gen} พ.ศ. {year} เมื่อ {hour}.{minute} {am_pm} น."], 
+        ["d", null, -182, "เมื่อ {day} {month_gen} พ.ศ. {year} เมื่อ {hour}.{minute} {am_pm} น."], 
+        ["d", -1, 0, "เมื่อวานนี้ {hour}.{minute} {am_pm} น."], 
+        ["d", 0, 1, "วันนี้ {hour}.{minute} {am_pm} น."], 
+        ["d", 1, 2, "พรุ่งนี้ {hour}.{minute} {am_pm} น."], 
+        "เมื่อ {hour}.{minute} {am_pm} น.  เมื่อ{day} {month_gen} "
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "เมื่อ {day} {mon_gen} พ.ศ. {year}"], 
+        ["y", 1, null, "เมื่อ {day} {mon_gen} พ.ศ. {year}"], 
+        ["d", null, -182, "เมื่อ {day} {mon_gen} พ.ศ. {year}"], 
+        ["d", -1, 0, "เมื่อวานนี้ {hour}.{minute} {am_pm} น."], 
+        ["d", 0, 1, "วันนี้ {hour}.{minute} {am_pm} น."], 
+        ["d", 1, 2, "พรุ่งนี้ {hour}.{minute} {am_pm} น."], 
+        "เมื่อ {hour}.{minute} {am_pm} น.  เมื่อ{day} {mon_gen} "
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "เมื่อ {day} {month_gen} พ.ศ. {year}"], 
+        ["y", 1, null, "เมื่อ {day} {month_gen} พ.ศ. {year}"], 
+        ["d", null, -182, "เมื่อ {day} {month_gen} พ.ศ. {year}"], 
+        ["d", -1, 0, "เมื่อวานนี้"], 
+        ["d", 0, 1, "วันนี้"], 
+        ["d", 1, 2, "พรุ่งนี้"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "เมื่อ {day} {month_gen} พ.ศ. {year}"], 
+        ["y", 1, null, "เมื่อ {day} {month_gen} พ.ศ. {year}"], 
+        ["d", null, -182, "เมื่อ {day} {month_gen} พ.ศ. {year}"], 
+        ["d", -1, 0, "เมื่อวานนี้"], 
+        ["d", 0, 1, "วันนี้"], 
+        ["d", 1, 2, "พรุ่งนี้"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

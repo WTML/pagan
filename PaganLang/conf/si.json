@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["ජනවා.", "පෙබර.", "මාර්.", "අප්‍රේ.", "මැයි.", "ජූනී.", "ජුලී.", "අගෝ.", "සැප්තැ.", "ඔක්තෝ.", "නොවැ.", "දෙසැම්."],
+        "month_gen": ["ජනවාරී", "පෙබරවාරී", "මාර්තු", "අප්‍රේල්", "මැයි", "ජූනී", "ජුලී", "අගෝස්තු", "සැප්තැම්බර්", "ඔක්තෝබර්", "නොවැම්බර්", "දෙසැම්බර්"],
+        "Month": ["ජනවාරී", "පෙබරවාරී", "මාර්තු", "අප්‍රේල්", "මැයි", "ජූනී", "ජුලී", "අගෝස්තු", "සැප්තැම්බර්", "ඔක්තෝබර්", "නොවැම්බර්", "දෙසැම්බර්"],
+        "Month_gen": ["ජනවාරී", "පෙබරවාරී", "මාර්තු", "අප්‍රේල්", "මැයි", "ජූනී", "ජුලී", "අගෝස්තු", "සැප්තැම්බර්", "ඔක්තෝබර්", "නොවැම්බර්", "දෙසැම්බර්"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ඊයේ {hour}:{minute} {am_pm} ට"], 
+        ["d", 0, 1, "අද {hour}:{minute} {am_pm} ට"], 
+        ["d", 1, 2, "හෙට {hour}:{minute} {am_pm} ට"], 
+        "{mon_gen} {day} වෙනිදා, {year} {hour}:{minute} {am_pm} ට "
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ඊයේ, {num_hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "අද, {num_hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "හෙට, {num_hour}:{minute} {am_pm}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} {am_pm}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ඊයේ {hour}:{minute}:{second} {am_pm}දී"], 
+        ["d", 0, 1, "අද {hour}:{minute}:{second} {am_pm}දී"], 
+        ["d", 1, 2, "හෙට {hour}:{minute}:{second} {am_pm}දී"], 
+        "{hour}:{minute}:{second} {am_pm} දී {mon_gen} {day}, {year} දා"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{month_gen} {day} වෙනිදා, {year} {hour}:{minute} {am_pm} ට"], 
+        ["y", 1, null, "{month_gen} {day} වෙනිදා, {year} {hour}:{minute} {am_pm} ට"], 
+        ["d", null, -182, "{month_gen} {day} වෙනිදා, {year} {hour}:{minute} {am_pm} ට"], 
+        ["d", -1, 0, "ඊයේ {hour}:{minute} {am_pm} ට"], 
+        ["d", 0, 1, "අද {hour}:{minute} {am_pm} ට"], 
+        ["d", 1, 2, "හෙට {hour}:{minute} {am_pm} ට"], 
+        "{month_gen} {day} දා {hour}:{minute} {am_pm} ට "
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{mon_gen}  {day} වෙනිදා, {year}  "], 
+        ["y", 1, null, "{mon_gen}  {day} වෙනිදා, {year}  "], 
+        ["d", null, -182, "{mon_gen}  {day} වෙනිදා, {year}  "], 
+        ["d", -1, 0, "ඊයේ {hour}:{minute} {am_pm} ට"], 
+        ["d", 0, 1, "අද {hour}:{minute} {am_pm} ට"], 
+        ["d", 1, 2, "හෙට {hour}:{minute} {am_pm} ට"], 
+        "{mon_gen} {day} දා {hour}:{minute} {am_pm} ට "
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{month_gen}  {day} වෙනිදා, {year}  "], 
+        ["y", 1, null, "{month_gen}  {day} වෙනිදා, {year}  "], 
+        ["d", null, -182, "{month_gen}  {day} වෙනිදා, {year}  "], 
+        ["d", -1, 0, "ඊයේ"], 
+        ["d", 0, 1, "අද"], 
+        ["d", 1, 2, "හෙට"], 
+        "{day} {month_gen} "
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{month_gen}  {day} වෙනිදා, {year}  "], 
+        ["y", 1, null, "{month_gen}  {day} වෙනිදා, {year}  "], 
+        ["d", null, -182, "{month_gen}  {day} වෙනිදා, {year}  "], 
+        ["d", -1, 0, "ඊයේ"], 
+        ["d", 0, 1, "අද"], 
+        ["d", 1, 2, "හෙට"], 
+        "{day} {month_gen} "
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.button_yes, .button_no {
+  margin: 2px 5px;
+  cursor: pointer;
+  width: auto;
+  height: auto;
+}
+.button_yes div, .button_no div {
+  padding: 4px 14px;
+  text-align: center;
+}
+.button_yes a:hover, .button_no a:hover {
+  text-decoration: none;
+}
+
+.button_yes {
+  border: 1px solid #3B6798;
+  text-shadow: 0px 1px 0px #45688E;
+}
+.button_yes_bottom {
+  border-bottom: 1px solid #2B587A;
+}
+.button_yes div {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #7E9CBC #5C82AB #5C82AB;
+  background-color:#6D8FB3;
+  color: #FFF;
+}
+.button_yes div.button_hover {
+  border-color: #92ACC7 #7293B7 #7293B7;
+  background-color: #84A1BF;
+}
+.button_yes div.button_down {
+  border-color: #51769e #51779f #7495b8;
+  background-color: #6688ad;
+}
+
+.button_no {
+  border: 1px solid #B8B8B8;
+  border-top: 1px solid #9F9F9F;
+  text-shadow: 0px 1px 0px #FFF;
+}
+.button_no div {
+  border: 1px solid #F4F4F4;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #DFDFDF;
+  background-color:#eaeaea;
+  color: #000;
+  text-decoration: none;
+}
+.button_no div.button_hover {
+  background-color: #f7f7f7;
+}
+.button_no div.button_down {
+  border-color: #cccccc #cbcbcb #e8e8e8;
+  background-color: #e4e4e4;
+}

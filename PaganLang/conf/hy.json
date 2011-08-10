@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["հնվ", "փտվ", "մրտ", "ապր", "մյս", "հնս", "հլս", "օգս", "սեպ", "հոկ", "նոյ", "դեկ"],
+        "month_gen": ["հունվարի", "փետրվարի", "մարտի", "ապրիլի", "մայիսի", "հունիսի", "հուլիսի", "օգոստոսի", "սեպտեմբերի", "հոկտեմբերի", "նոյեմբերի", "դեկտեմբերի"],
+        "Month": ["Հունվար", "Փետրվար", "Մարտ", "Ապրիլ", "Մայիս", "Հունիս", "Հուլիս", "Օգոստոս", "Սեպտեմբեր", "Հոկտեմբեր", "Նոյեմբեր", "Դեկտեմբեր"],
+        "Month_gen": ["Հունվարի", "Փետրվարի", "Մարտի", "Ապրիլի", "Մայիսի", "Հունիսի", "Հուլիսի", "Օգոստոսի", "Սեպտեմբերի", "Հոկտեմբերի", "Նոյեմբերի", "Դեկտեմբերի"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "երեկ՝ ժ. {hour}:{minute}"], 
+        ["d", 0, 1, "այսօր՝ ժ. {hour}:{minute}"], 
+        ["d", 1, 2, "վաղը՝ ժ. {hour}:{minute}"], 
+        "{year} {mon_gen} {day}֊ին՝ ժ. {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "երեկ՝ {num_hour}:{minute}"], 
+        ["d", 0, 1, "այսօր՝ {num_hour}:{minute}"], 
+        ["d", 1, 2, "վաղը՝ {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "երեկ` ժամը {hour}:{minute}:{second}ին"], 
+        ["d", 0, 1, "այսօր` ժամը {hour}:{minute}:{second}ին"], 
+        ["d", 1, 2, "վաղը` ժամը {hour}:{minute}:{second}ին"], 
+        "{day} {mon_gen} {year} ժամը {hour}:{minute}:{second}ին"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}֊ին՝ ժ. {hour}:{minute}"], 
+        ["y", 1, null, "{year} {month_gen} {day}֊ին՝ ժ. {hour}:{minute}"], 
+        ["d", null, -182, "{year} {month_gen} {day}֊ին՝ ժ. {hour}:{minute}"], 
+        ["d", -1, 0, "երեկ՝ ժ. {hour}:{minute}"], 
+        ["d", 0, 1, "այսօր՝ ժ. {hour}:{minute}"], 
+        ["d", 1, 2, "վաղը՝ ժ. {hour}:{minute}"], 
+        " {month_gen} {day}՝ ժ. {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {mon_gen} {day}"], 
+        ["y", 1, null, "{year} {mon_gen} {day}"], 
+        ["d", null, -182, "{year} {mon_gen} {day}"], 
+        ["d", -1, 0, "երեկ՝ ժ. {hour}:{minute}"], 
+        ["d", 0, 1, "այսօր՝ ժ. {hour}:{minute}"], 
+        ["d", 1, 2, "վաղը՝ ժ. {hour}:{minute}"], 
+        " {mon_gen} {day}՝ ժ. {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}"], 
+        ["y", 1, null, "{year} {month_gen} {day}"], 
+        ["d", null, -182, "{year} {month_gen} {day}"], 
+        ["d", -1, 0, "երեկ"], 
+        ["d", 0, 1, "այսօր"], 
+        ["d", 1, 2, "վաղը"], 
+        " {month_gen} {day}ին"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}"], 
+        ["y", 1, null, "{year} {month_gen} {day}"], 
+        ["d", null, -182, "{year} {month_gen} {day}"], 
+        ["d", -1, 0, "երեկ"], 
+        ["d", 0, 1, "այսօր"], 
+        ["d", 1, 2, "վաղը"], 
+        " {month_gen} {day}ին"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

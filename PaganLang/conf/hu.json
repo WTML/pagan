@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["jan", "feb", "már", "ápr", "máj", "jún", "júl", "aug", "szept", "okt", "nov", "dec"],
+        "month_gen": ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"],
+        "Month": ["Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"],
+        "Month_gen": ["Január", "Február", "Március", "Április", "Május", "Június", "Július", "Augusztus", "Szeptember", "Október", "November", "December"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "tegnap, {hour}:{minute}-kor"], 
+        ["d", 0, 1, "ma, {hour}:{minute}-kor"], 
+        ["d", 1, 2, "holnap, {hour}:{minute}-kor"], 
+        "{year} {mon_gen}. {day}. {hour}:{minute}-kor"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "tegnap, {num_hour}:{minute}-kor"], 
+        ["d", 0, 1, "ma, {num_hour}:{minute}-kor"], 
+        ["d", 1, 2, "holnap, {num_hour}:{minute}-kor"], 
+        "{short_year} {mm} {num_day}. {num_hour}:{minute} -kor"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "tegnap, {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "ma, {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "holnap, {hour}:{minute}:{second}"], 
+        "{year} {mon_gen} {day} , {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}., {hour}:{minute}-kor"], 
+        ["y", 1, null, "{year} {month_gen} {day}., {hour}:{minute}-kor"], 
+        ["d", null, -182, "{year} {month_gen} {day}., {hour}:{minute}-kor"], 
+        ["d", -1, 0, "tegnap {hour}:{minute}-kor"], 
+        ["d", 0, 1, "ma {hour}:{minute}-kor"], 
+        ["d", 1, 2, "holnap {hour}:{minute}-kor"], 
+        "{month_gen} {day}. {hour}:{minute}-kor"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {mon_gen} {day}."], 
+        ["y", 1, null, "{year} {mon_gen} {day}."], 
+        ["d", null, -182, "{year} {mon_gen} {day}."], 
+        ["d", -1, 0, "tegnap {hour}:{minute}-kor"], 
+        ["d", 0, 1, "ma {hour}:{minute}-kor"], 
+        ["d", 1, 2, "holnap {hour}:{minute}-kor"], 
+        "{mon_gen} {day}. {hour}:{minute}-kor"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}."], 
+        ["y", 1, null, "{year} {month_gen} {day}."], 
+        ["d", null, -182, "{year} {month_gen} {day}."], 
+        ["d", -1, 0, "tegnap"], 
+        ["d", 0, 1, "ma"], 
+        ["d", 1, 2, "holnap"], 
+        "{month_gen} {day}."
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}."], 
+        ["y", 1, null, "{year} {month_gen} {day}."], 
+        ["d", null, -182, "{year} {month_gen} {day}."], 
+        ["d", -1, 0, "tegnap"], 
+        ["d", 0, 1, "ma"], 
+        ["d", 1, 2, "holnap"], 
+        "{month_gen} {day}."
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Jan.", "Feb.", "Mar.", "Apr.", "Mei", "Jun.", "Jul.", "Agt.", "Sep.", "Okt.", "Nop.", "Des."],
+        "month_gen": ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"],
+        "Month": ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"],
+        "Month_gen": ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "kemarin pada jam {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "hari ini pada jam {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "besok pada jam {hour}:{minute} {am_pm}"], 
+        "tanggal {day} {mon_gen} {year} pada jam {hour}:{minute} {am_pm}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "kemarin, {num_hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "hari ini, {num_hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "besok, {num_hour}:{minute} {am_pm}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} {am_pm}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "kemarin jam {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "hari ini jam {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "besok jam {hour}:{minute}:{second} {am_pm}"], 
+        "jam {hour}:{minute}:{second} {am_pm} pada {day} {mon_gen} {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "pada tanggal {day} {month_gen} {year} pukul {hour}:{minute}"], 
+        ["y", 1, null, "pada tanggal {day} {month_gen} {year} pukul {hour}:{minute}"], 
+        ["d", null, -182, "pada tanggal {day} {month_gen} {year} pukul {hour}:{minute}"], 
+        ["d", -1, 0, "kemarin pada jam {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "hari ini pada jam {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "besok pada jam {hour}:{minute} {am_pm}"], 
+        "tanggal {day} {month_gen} pada jam {hour}:{minute} {am_pm} "
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "pada {day} {mon_gen} {year}"], 
+        ["y", 1, null, "pada {day} {mon_gen} {year}"], 
+        ["d", null, -182, "pada {day} {mon_gen} {year}"], 
+        ["d", -1, 0, "kemarin pada jam {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "hari ini pada jam {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "besok pada jam {hour}:{minute} {am_pm}"], 
+        "tanggal {day} {mon_gen} pada jam {hour}:{minute} {am_pm} "
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "pada {day} {month_gen} {year}"], 
+        ["y", 1, null, "pada {day} {month_gen} {year}"], 
+        ["d", null, -182, "pada {day} {month_gen} {year}"], 
+        ["d", -1, 0, "kemarin"], 
+        ["d", 0, 1, "hari ini"], 
+        ["d", 1, 2, "besok"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "pada {day} {month_gen} {year}"], 
+        ["y", 1, null, "pada {day} {month_gen} {year}"], 
+        ["d", null, -182, "pada {day} {month_gen} {year}"], 
+        ["d", -1, 0, "kemarin"], 
+        ["d", 0, 1, "hari ini"], 
+        ["d", 1, 2, "besok"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

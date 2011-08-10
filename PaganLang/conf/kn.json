@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["ಜನವರಿ", "ಫೆಬ್ರವರಿ", "ಮಾರ್ಚ್", "ಏಪ್ರಿಲ್", "ಮೇ", "ಜೂನ್", "ಜುಲೈ", "ಆಗಸ್ಟ್", "ಸೆಪ್ಟೆಂಬರ್", "ಅಕ್ಟೋಬರ್", "ನವಂಬರ್", "ಡಿಸಂಬರ್"],
+        "month_gen": ["ಜನವರಿ", "ಫೆಬ್ರವರಿ", "ಮಾರ್ಚ್", "ಏಪ್ರಿಲ್", "ಮೇ", "ಜೂನ್", "ಜುಲೈ", "ಆಗಸ್ಟ್", "ಸೆಪ್ಟೆಂಬರ್", "ಅಕ್ಟೋಬರ್", "ನವಂಬರ್", "ಡಿಸಂಬರ್"],
+        "Month": ["ಜನವರಿ", "ಫೆಬ್ರವರಿ", "ಮಾರ್ಚ್", "ಏಪ್ರಿಲ್", "ಮೇ", "ಜೂನ್", "ಜುಲೈ", "ಆಗಸ್ಟ್", "ಸೆಪ್ಟೆಂಬರ್", "ಅಕ್ಟೋಬರ್", "ನವಂಬರ್", "ಡಿಸಂಬರ್"],
+        "Month_gen": ["ಜನವರಿ", "ಫೆಬ್ರವರಿ", "ಮಾರ್ಚ್", "ಏಪ್ರಿಲ್", "ಮೇ", "ಜೂನ್", "ಜುಲೈ", "ಆಗಸ್ಟ್", "ಸೆಪ್ಟೆಂಬರ್", "ಅಕ್ಟೋಬರ್", "ನವಂಬರ್", "ಡಿಸಂಬರ್"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ನಿನ್ನೆ ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "ಇಂದು ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "ನಾಳೆ ಅಲ್ಲಿ  {hour}:{minute} {am_pm}"], 
+        "ಅಲ್ಲಿ {hour}:{minute} {am_pm} ಅಂದು {mon_gen} {day}, {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ನಿನ್ನೆ:, {num_hour}:{minute}"], 
+        ["d", 0, 1, "ಇಂದು, {num_hour}:{minute}"], 
+        ["d", 1, 2, "ನಾಳೆ, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ನಿನ್ನೆ ಅಲ್ಲಿ {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "ಇಂದು ಅಲ್ಲಿ {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "ನಾಳೆ ಅಲ್ಲಿ {hour}:{minute}:{second} {am_pm}"], 
+        "ಅಲ್ಲಿ {hour}:{minute}:{second} {am_pm} ಅಂದು {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "ಅಂದು {month_gen} {day}, {year} ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, "ಅಂದು {month_gen} {day}, {year} ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, "ಅಂದು {month_gen} {day}, {year} ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "ನಿನ್ನೆ ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "ಇಂದು ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "ನಾಳೆ ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        "ಅಲ್ಲಿ {hour}:{minute} {am_pm} ಅಂದು {month_gen} {day}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "ಅಂದು {mon_gen} {day}, {year}"], 
+        ["y", 1, null, "ಅಂದು {mon_gen} {day}, {year}"], 
+        ["d", null, -182, "ಅಂದು {mon_gen} {day}, {year}"], 
+        ["d", -1, 0, "ನಿನ್ನೆ ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "ಇಂದು ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "ನಾಳೆ ಅಲ್ಲಿ {hour}:{minute} {am_pm}"], 
+        "ಅಲ್ಲಿ {hour}:{minute} {am_pm} ಅಂದು {mon_gen} {day}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "ಅಂದು {month_gen} {day}, {year}"], 
+        ["y", 1, null, "ಅಂದು {month_gen} {day}, {year}"], 
+        ["d", null, -182, "ಅಂದು {month_gen} {day}, {year}"], 
+        ["d", -1, 0, "ನಿನ್ನೆ "], 
+        ["d", 0, 1, "ಇಂದು "], 
+        ["d", 1, 2, "ನಾಳೆ "], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "ಅಂದು {month_gen} {day}, {year}"], 
+        ["y", 1, null, "ಅಂದು {month_gen} {day}, {year}"], 
+        ["d", null, -182, "ಅಂದು {month_gen} {day}, {year}"], 
+        ["d", -1, 0, "ನಿನ್ನೆ "], 
+        ["d", 0, 1, "ಇಂದು "], 
+        ["d", 1, 2, "ನಾಳೆ "], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

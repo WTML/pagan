@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+        "month_gen": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+        "Month": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+        "Month_gen": ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "{hour}:{minute}"], 
+        ["d", 0, 1, "{hour}:{minute}"], 
+        ["d", 1, 2, "{hour}:{minute}"], 
+        "{year}.{mon_gen}.{day} {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "어제, {num_hour}:{minute}"], 
+        ["d", 0, 1, "오늘, {num_hour}:{minute}"], 
+        ["d", 1, 2, "내일, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "{hour}{minute}{second}"], 
+        ["d", 0, 1, "{hour}{minute}{second}"], 
+        ["d", 1, 2, "{hour}{minute}{second}"], 
+        "{hour}{minute}{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year} {hour}:{minute}에"], 
+        ["y", 1, null, "{day} {month_gen} {year} {hour}:{minute}에"], 
+        ["d", null, -182, "{day} {month_gen} {year} {hour}:{minute}에"], 
+        ["d", -1, 0, "{hour}:{minute}"], 
+        ["d", 0, 1, "{hour}:{minute}"], 
+        ["d", 1, 2, "{hour}:{minute}"], 
+        "{hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}.{mon_gen}.{day}"], 
+        ["y", 1, null, "{year}.{mon_gen}.{day}"], 
+        ["d", null, -182, "{year}.{mon_gen}.{day}"], 
+        ["d", -1, 0, "{hour}:{minute}"], 
+        ["d", 0, 1, "{hour}:{minute}"], 
+        ["d", 1, 2, "{hour}:{minute}"], 
+        "{hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}.{month_gen}.{day}"], 
+        ["y", 1, null, "{year}.{month_gen}.{day}"], 
+        ["d", null, -182, "{year}.{month_gen}.{day}"], 
+        ["d", -1, 0, "어제"], 
+        ["d", 0, 1, "오늘"], 
+        ["d", 1, 2, "내일"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}.{month_gen}.{day}"], 
+        ["y", 1, null, "{year}.{month_gen}.{day}"], 
+        ["d", null, -182, "{year}.{month_gen}.{day}"], 
+        ["d", -1, 0, "어제"], 
+        ["d", 0, 1, "오늘"], 
+        ["d", 1, 2, "내일"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

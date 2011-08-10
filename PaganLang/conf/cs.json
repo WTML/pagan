@@ -1,0 +1,225 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince"],
+        "month_gen": ["ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince"],
+        "Month": ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"],
+        "Month_gen": ["Ledna", "Února", "Března", "Dubna", "Května", "Června", "Července", "Srpna", "Září", "Října", "Listopadu", "Prosince"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "včera v {hour}:{minute}"], 
+        ["d", 0, 1, "dnes v {hour}:{minute}"], 
+        ["d", 1, 2, "zítra v {hour}:{minute}"], 
+        "{day}. {mon_gen} {year} v {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "včera, {num_hour}:{minute}"], 
+        ["d", 0, 1, "dnes, {num_hour}:{minute}"], 
+        ["d", 1, 2, "zítra, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "včera v {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "dnes v {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "zítra v {hour}:{minute}:{second}"], 
+        "{day}. {mon_gen} {year} v {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day}. {month_gen} {year} v {hour}:{minute}"], 
+        ["y", 1, null, "{day}. {month_gen} {year} v {hour}:{minute}"], 
+        ["d", null, -182, "{day}. {month_gen} {year} v {hour}:{minute}"], 
+        ["d", -1, 0, "včera {hour}:{minute}"], 
+        ["d", 0, 1, "dnes v {hour}:{minute}"], 
+        ["d", 1, 2, "zítra v {hour}:{minute}"], 
+        "{day}. {month_gen} v {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day}. {mon_gen} {year}"], 
+        ["y", 1, null, "{day}. {mon_gen} {year}"], 
+        ["d", null, -182, "{day}. {mon_gen} {year}"], 
+        ["d", -1, 0, "včera {hour}:{minute}"], 
+        ["d", 0, 1, "dnes v {hour}:{minute}"], 
+        ["d", 1, 2, "zítra v {hour}:{minute}"], 
+        "{day}. {mon_gen} v {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day}. {month_gen} {year}"], 
+        ["y", 1, null, "{day}. {month_gen} {year}"], 
+        ["d", null, -182, "{day}. {month_gen} {year}"], 
+        ["d", -1, 0, "včera"], 
+        ["d", 0, 1, "dnes"], 
+        ["d", 1, 2, "zítra"], 
+        "{day}. {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day}. {month_gen} {year}"], 
+        ["y", 1, null, "{day}. {month_gen} {year}"], 
+        ["d", null, -182, "{day}. {month_gen} {year}"], 
+        ["d", -1, 0, "včera"], 
+        ["d", 0, 1, "dnes"], 
+        ["d", 1, 2, "zítra"], 
+        "{day}. {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }, 
+        {
+          "mod": 0,
+          "values": [2, 3, 4],
+          "variant": 2
+        }
+      ],
+      "int": 3,
+      "float": 4
+    },
+    "fname_flex": {
+      "type": "flex",
+      "from": "{original.first_name}",
+      "to": "{current.first_name}",
+      "flexible": "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm",
+      "group": "fnameGen,fnameDat,fnameAcc,fnameIns,fnameAbl",
+      "patterns": [
+        {
+          "search": "~a",
+          "replace": [
+            {
+              "out": "~y,~ě,~u,~ou,~ě",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~y,~ovi,~u,~ou,~ovi",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~a,~ovi,~a,~em,~ovi",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }
+      ]
+    },
+    "lname_flex": {
+      "type": "flex",
+      "from": ["{original.last_name}", "{original.nickname}"],
+      "to": ["{current.last_name}", "{current.nickname}"],
+      "flexible": "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm",
+      "group": "lnameGen,lnameDat,lnameAcc,lnameIns,lnameAbl",
+      "patterns": [
+        {
+          "search": "~a",
+          "replace": [
+            {
+              "out": "~y,~ě,~u,~ou,~ě",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~y,~ovi,~u,~ou,~ovi",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~a,~ovi,~a,~em,~ovi",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }
+      ]
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

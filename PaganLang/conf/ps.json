@@ -1,0 +1,150 @@
+{
+  "RTL": 1,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": [" جن", "فیب", " مار", "اپر.", "می", "جون.", "جول.", "اګ.", "سپ.", "اکت.", "نو.", "ډس."],
+        "month_gen": [" جنوري", " فیبروري", " مارچ", " اپریل", " می", " جون", " جولای", " اګست", " ستمبر", "اکتوبر", "نومبر", " دسمبر"],
+        "Month": [" جنوري", " فیبروري", " مارچ<br>", " اپریل", "می", " جون", " جولای", " اګست", " ستمبر", "اکتوبر", " نومبر", " ډسمبر"],
+        "Month_gen": [" جنوري", " فبروري", " مارچ", "اپریل<br>", " می", " جون", "جولای", "اګست", " ستمبر", " اکتوبر", " نومبر", " دسمبر"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "پرون پر {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "today at {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "سبا پر{hour}:{minute} {am_pm}"], 
+        "{mon_gen} {day}, {year} په {hour}:{minute} {am_pm}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, null], 
+        ["y", 1, null, null], 
+        ["d", null, -182, null], 
+        ["d", -1, 0, "{am_pm}{minute}{hour}"], 
+        ["d", 0, 1, "{am_pm}{hour}{minute}"], 
+        ["d", 1, 2, "{hour}{minute}{am_pm}"], 
+        "{am_pm}{hour}{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, null], 
+        ["y", 1, null, null], 
+        ["d", null, -182, null], 
+        ["d", -1, 0, "{am_pm}{minute}{hour}"], 
+        ["d", 0, 1, "{am_pm}{hour}{minute}"], 
+        ["d", 1, 2, "{hour}{minute}{am_pm}"], 
+        "{am_pm}{hour}{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, null], 
+        ["y", 1, null, null], 
+        ["d", null, -182, null], 
+        ["d", -1, 0, " پرون ورځ"], 
+        ["d", 0, 1, "نن ورځ"], 
+        ["d", 1, 2, " سبا ورځ"], 
+        "ورځ -میاشت"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, null], 
+        ["y", 1, null, null], 
+        ["d", null, -182, null], 
+        ["d", -1, 0, " پرون ورځ"], 
+        ["d", 0, 1, "نن ورځ"], 
+        ["d", 1, 2, " سبا ورځ"], 
+        "ورځ -میاشت"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

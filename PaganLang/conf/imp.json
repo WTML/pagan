@@ -1,0 +1,1021 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["янв.", "фев.", "мар.", "апр.", "мая", "iюн.", "iюл.", "авг.", "сен.", "окт.", "ноя.", "дек."],
+        "month_gen": ["января", "февраля", "марта", "апрѣля", "мая", "iюня", "iюля", "августа", "сентября", "октября", "ноября", "декабря"],
+        "Month": ["Январь", "Февраль", "Мартъ", "Апрѣль", "Май", "Iюнь", "Iюль", "Августъ", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+        "Month_gen": ["Января", "Февраля", "Марта", "Апрѣля", "Мая", "Iюня", "Iюля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "вчера въ {hour}:{minute}"], 
+        ["d", 0, 1, "сего дня въ {hour}:{minute}"], 
+        ["d", 1, 2, "завтра въ {hour}:{minute}"], 
+        "{day} {mon_gen} {year} въ {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "вчера, {num_hour}:{minute}"], 
+        ["d", 0, 1, "сегодня, {num_hour}:{minute}"], 
+        ["d", 1, 2, "завтра, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "вчера въ {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "сего дня въ {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "завтра въ {hour}:{minute}:{second}"], 
+        "{day} {mon_gen} {year} въ {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year} въ {hour}:{minute}"], 
+        ["y", 1, null, "{day} {month_gen} {year} въ {hour}:{minute}"], 
+        ["d", null, -182, "{day} {month_gen} {year} въ {hour}:{minute}"], 
+        ["d", -1, 0, "вчера в {hour}:{minute}"], 
+        ["d", 0, 1, "сего дня въ {hour}:{minute}"], 
+        ["d", 1, 2, "завтра въ {hour}:{minute}"], 
+        "{day} {month_gen} въ {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {mon_gen} {year}"], 
+        ["y", 1, null, "{day} {mon_gen} {year}"], 
+        ["d", null, -182, "{day} {mon_gen} {year}"], 
+        ["d", -1, 0, "вчера в {hour}:{minute}"], 
+        ["d", 0, 1, "сего дня въ {hour}:{minute}"], 
+        ["d", 1, 2, "завтра въ {hour}:{minute}"], 
+        "{day} {mon_gen} въ {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": " ",
+      "decimal": ",",
+      "variants": [
+        {
+          "mod": 100,
+          "values": [11, 12, 13, 14],
+          "variant": 3
+        }, 
+        {
+          "mod": 10,
+          "values": [1],
+          "variant": 1
+        }, 
+        {
+          "mod": 10,
+          "values": [2, 3, 4],
+          "variant": 2
+        }
+      ],
+      "int": 3,
+      "float": 2
+    },
+    "fname_flex": {
+      "type": "flex",
+      "from": "{original.first_name}",
+      "to": "{current.first_name}",
+      "flexible": "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЭЮЯIабвгдеёжзийклмнопрстуфхцчшщъьэюяi",
+      "group": "fnameGen,fnameDat,fnameAcc,fnameIns,fnameAbl",
+      "patterns": [
+        {
+          "search": "~ь",
+          "replace": [
+            {
+              "out": "~и,~и,~ь,~ью,~и",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~я,~ю,~я,~ем,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Гюзель,Гузель,Айгуль,Айгюль,Гюнэль,Гюнель,Даниэль,Аревикъ,Астхикъ,Шагикъ,Татевикъ,Сатеникъ,Манушакъ,Анушикъ,Хасмикъ,Назикъ,Кайцакъ,Ардакъ,Арпикъ,Гюзяль,Жибекъ,Асель,Николь,Аниель,Асмикъ,Ола,Эттель",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~о,~у,~ы,~э,~ё,~ю,~и,~е",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~й",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~я,~ю,~я,~емъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~iй",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~iя,~iю,~iя,~iемъ,~iи",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~я",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~ю,~ей,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~iя",
+          "replace": [
+            {
+              "out": "~iи,~iи,~iю,~iей,~iи",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~iи,~iѣ,~iю,~iей,~iѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Алi~я,Нажi~я,Галi~я,Альфi~я,Балхi~я,Нурi~я",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~ю,~ей,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~а",
+          "replace": [
+            {
+              "out": "~ы,~ѣ,~у,~ой,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~к~а,~х~а,~г~а",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~у,~ой,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~ш~а,~ж~а,~ч~а,~щ~а",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~у,~ей,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~ца",
+          "replace": [
+            {
+              "out": "~цы,~цѣ,~цу,~цей,~цѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "Миляуш~а",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~у,~ой,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~,~~ъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~а,~у,~а,~омъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Пётръ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "Петра,Петру,Петра,Петромъ,Петрѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Павелъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "Павла,Павлу,Павла,Павломъ,Павлѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Левъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "Льва,Льву,Льва,Львомъ,Львѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~а~ёкъ,~о~ёкъ,~у~ёкъ,~е~ёкъ,~и~ёкъ",
+          "replace": [
+            {
+              "out": "~йка,~йку,~йка,~йкомъ,~йкѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~ёкъ",
+          "replace": [
+            {
+              "out": "~ька,~ьку,~ька,~ькомъ,~ькѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~окъ",
+          "replace": [
+            {
+              "out": "~ка,~ку,~ка,~комъ,~кѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "Юрецъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "Юрца,Юрцу,Юрца,Юрцомъ,Юрцѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }
+      ]
+    },
+    "lname_flex": {
+      "type": "flex",
+      "from": ["{original.last_name}", "{original.nickname}"],
+      "to": ["{current.last_name}", "{current.nickname}"],
+      "flexible": "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЭЮЯIабвгдеёжзийклмнопрстуфхцчшщъьэюяi",
+      "group": "lnameGen,lnameDat,lnameAcc,lnameIns,lnameAbl",
+      "patterns": [
+        {
+          "search": "~о,~у,~ы,~э,~ё,~ю,~и,~е",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~я",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~ю,~ей,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "Цхака~я,Баркла~я,Арча~я,Сана~я,Бера~я",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~ю,~ей,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~ая",
+          "replace": [
+            {
+              "out": "~ой,~ой,~ую,~ой,~ой",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~аи,~аѣ,~аю,~аей,~аѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ж~ая,~ш~ая,~щ~ая,~ч~ая,~ц~ая",
+          "replace": [
+            {
+              "out": "~ей,~ей,~ую,~ей,~ей",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~аи,~аѣ,~аю,~аей,~аѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~яя",
+          "replace": [
+            {
+              "out": "~ей,~ей,~юю,~ей,~ей",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~iя",
+          "replace": [
+            {
+              "out": "~iи,~iѣ,~iю,~iей,~iѣ",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~iи,~iи,~iю,~iей,~iи",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Мякеля,Лямся,Талья,Луя,Рейня,Ростобая,Пелля,Время,Титма",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~а",
+          "replace": [
+            {
+              "out": "~ы,~ѣ,~у,~ой,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~ов~а,~ев~а,~ёв~а,~ын~а,~ин~а",
+          "replace": [
+            {
+              "out": "~ой,~ой,~у,~ой,~ой",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ы,~ѣ,~у,~ой,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Былин~а",
+          "replace": [
+            {
+              "out": "~ы,~ѣ,~у,~ой,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "Швидк~а",
+          "replace": [
+            {
+              "out": "~ой,~ой,~у,~ой,~ой",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~а,~у,~у,~омъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Ирчишен~а",
+          "replace": [
+            {
+              "out": "~ой,~ой,~у,~ой,~ой",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ы,~ѣ,~у,~ой,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Бов~а,Сов~а,Худын~а,Щербин~а,Калин~а",
+          "replace": [
+            {
+              "out": "~ы,~ѣ,~у,~ой,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~у~а,~и~а,~э~а,~е~а,~ю~а,~а~а,~о~а",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~к~а,~х~а,~г~а",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~у,~ой,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~ш~а,~ж~а,~ч~а,~щ~а",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~у,~ей,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "Кваш~а,Ганж~а,Уш~а,Ханаш~а",
+          "replace": [
+            {
+              "out": "~и,~ѣ,~у,~ой,~ѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "~ца",
+          "replace": [
+            {
+              "out": "~цы,~цѣ,~цу,~цей,~цѣ"
+            }
+          ]
+        }, 
+        {
+          "search": "Дюм~а,Петип~а,Кешелав~а,Малек~а,Рошк~а,Ракш~а,Гар~а,Шкут~а,Опар~а,Ф~а,Бег~а,Туг~а,Дюб~а",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~ь",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~я,~ю,~я,~емъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ень,Уласе~нь,Пиве~нь,Се~нь,Ме~нь,Хебе~нь,Ште~нь,Дере~нь,Липе~нь",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ня,~ню,~ня,~немъ,~нѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Журав~ель",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ля,~лю,~ля,~лемъ,~лѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~й,Берего~й,Водосто~й,Корро~й,Коро~й,Геро~й,Стро~й,Алло~й,Градобо~й",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~я,~ю,~я,~емъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Бо~й,Во~й,Го~й,До~й,Ко~й,Ло~й,Но~й,Ро~й,Со~й,То~й,Ко~й,Ло~й,Уо~й,Фо~й,Хо~й,Цо~й,Чо~й,Шо~й",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~я,~ю,~я,~емъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ой,~ый",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ого,~ому,~ого,~ымъ,~омъ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~цый",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~цего,~цему,~цего,~цымъ,~цемъ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~г~ой,~к~ой,~х~ой,~ж~ой,~ш~ой,~щ~ой,~ч~ой",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ого,~ому,~ого,~имъ,~омъ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~iй",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~iя,~iю,~iя,~iемъ,~iи",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~г~iй,~к~iй,~х~iй",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ого,~ому,~ого,~имъ,~омъ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ч~iй,~ж~iй,~ш~iй,~щ~iй,~н~iй",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~его,~ему,~его,~имъ,~емъ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Арсенi~й,Гуржi~й,Трухнi~й,Мохi~й,Топчi~й,Багрi~й,Тульчi~й,Саланжi~й",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~я,~ю,~я,~емъ,~и",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ей",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ея,~ею,~ея,~еемъ,~еѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Солов~ей,Вороб~ей",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ья,~ью,~ья,~ьемъ,~ьѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Кротъ,Сукъ,Гнепъ,Кремсъ,Чанъ,Фа,Кустъ",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~ихъ,~ыхъ",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~окъ,~екъ,~ч~ёкъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ка,~ку,~ка,~комъ,~кѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Войтише~къ,Цве~къ,Дуде~къ,Буче~къ,Ляше~къ,Ше~къ,Клаче~къ,Баче~къ,Корчмаре~къ,Дяче~къ,Цумбе~къ,Собе-Пане~къ,Штре~къ,Сире~къ,Псуе~къ,Матие~къ,Пане~къ,Поле~къ,Саде~къ,Стро~къ,Ско~къ,Смо~къ,Воло~къ,Набо~къ,Бро~къ,Шейнро~къ,Скаче~къ,Гае~къ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ка,~ку,~ка,~комъ,~кѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ёкъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ька,~ьку,~ька,~ькомъ,~ькѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ецъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ца,~цу,~ца,~цемъ,~цѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Жуклин~ецъ,Гапан~ецъ,Кремен~ецъ,Ворон~ецъ,Рухов~ецъ,От~ецъ,Чигрин~ецъ,Тестел~ецъ,Короб~ецъ,Лубен~ецъ,Крав~ецъ,Шв~ецъ,Жн~ецъ,Бо~ецъ,Титов~ецъ,Скреб~ецъ,Канив~ецъ,Митьков~ецъ,Зимов~ецъ,Мул~ецъ,Дон~ецъ,Сидор~ецъ,Туров~ецъ,Ливин~ецъ,Чуднов~ецъ,Мыслив~ецъ,Бел~ецъ,Малахов~ецъ,Козуб~ецъ,Казан~ецъ,Якуб~ецъ,Козин~ецъ,Москал~ецъ,Шабан~ецъ,Корни~ецъ,Степан~ецъ,Брагин~ецъ,Левин~ецъ,Руб~ецъ,Кацав~ецъ,Остап~ецъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ца,~цу,~ца,~цомъ,~цѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Е~лецъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~льца,~льцу,~льца,~льцомъ,~льцѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~лецъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~льца,~льцу,~льца,~льцемъ,~льцѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~а~ецъ,~е~ецъ,~и~ецъ,~о~ецъ,~у~ецъ,~ю~ецъ,~я~ецъ,~ы~ецъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~йца,~йцу,~йца,~йцемъ,~йце",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Шв~ецъ,Жн~ецъ,За~ецъ,Б~ецъ,Бразн~ецъ,Гр~ецъ,Ойн~ецъ,Хейф~ецъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~еца,~ецу,~еца,~ецомъ,~ецѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Кеб~ецъ,Ге~ецъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~еца,~ецу,~еца,~ецемъ,~ецѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Вет~еръ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ра,~ру,~ра,~ромъ,~рѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ёлъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~ла,~лу,~ла,~ломъ,~лѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Каптёлъ",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }, 
+        {
+          "search": "~,~~ъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~а,~у,~а,~омъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Варкентин~ъ,Эллин~ъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~а,~у,~а,~омъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ев~ъ,~ов~ъ,~ёв~ъ,~ин~ъ,~ын~ъ,Ковалышен~ъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~а,~у,~а,~ымъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "~ч~ъ,~ш~ъ,~ц~ъ,~щ~ъ,~ж~ъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~а,~у,~а,~емъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Сыч~ъ,Карандаш~ъ,Чиж~ъ,Кулиш~ъ,Пыж~ъ,Барабаш~ъ,Пархач~ъ,Деркач~ъ,Грин~ъ,Шин~ъ",
+          "replace": [
+            {
+              "out": "",
+              "cond": "original.sex=1"
+            }, 
+            {
+              "out": "~а,~у,~а,~омъ,~ѣ",
+              "cond": "original.sex<>1"
+            }
+          ]
+        }, 
+        {
+          "search": "Тер-,Нор-,Сулима-,Бей-,Джан-,Гаген-",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }
+      ]
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

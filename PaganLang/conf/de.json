@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Jan.", "Feb.", "Mrz.", "Apr.", "Mai", "Jun.", "Jul.", "Aug.", "Sept.", "Okt.", "Nov.", "Dez."],
+        "month_gen": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+        "Month": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+        "Month_gen": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "gestern um {hour}:{minute} Uhr"], 
+        ["d", 0, 1, "heute um {hour}:{minute} Uhr"], 
+        ["d", 1, 2, "morgen um {hour}:{minute} Uhr"], 
+        "am {day}. {mon_gen} {year} um {hour}:{minute} Uhr"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Gestern, {num_hour}:{minute}"], 
+        ["d", 0, 1, "Heute, {num_hour}:{minute}"], 
+        ["d", 1, 2, "Morgen, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Gestern um {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "Heute um {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "Morgen um {hour}:{minute}:{second} {am_pm}"], 
+        "um {hour}:{minute}:{second} {am_pm} am {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "am {day}. {month_gen} {year} um {hour}:{minute} Uhr"], 
+        ["y", 1, null, "am {day}. {month_gen} {year} um {hour}:{minute} Uhr"], 
+        ["d", null, -182, "am {day}. {month_gen} {year} um {hour}:{minute} Uhr"], 
+        ["d", -1, 0, "Erstellt gestern um {hour}:{minute} Uhr"], 
+        ["d", 0, 1, "Erstellt heute um {hour}:{minute} Uhr"], 
+        ["d", 1, 2, "Morgen um {hour}:{minute} Uhr"], 
+        "Erstellt um {hour}:{minute} Uhr am {day}. {month_gen}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "am {day}. {mon_gen} {year}"], 
+        ["y", 1, null, "am {day}. {mon_gen} {year}"], 
+        ["d", null, -182, "am {day}. {mon_gen} {year}"], 
+        ["d", -1, 0, "Erstellt gestern um {hour}:{minute} Uhr"], 
+        ["d", 0, 1, "Erstellt heute um {hour}:{minute} Uhr"], 
+        ["d", 1, 2, "Morgen um {hour}:{minute} Uhr"], 
+        "Erstellt um {hour}:{minute} Uhr am {day}. {mon_gen}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "am {day}. {month_gen} {year}"], 
+        ["y", 1, null, "am {day}. {month_gen} {year}"], 
+        ["d", null, -182, "am {day}. {month_gen} {year}"], 
+        ["d", -1, 0, "gestern"], 
+        ["d", 0, 1, "heute"], 
+        ["d", 1, 2, "morgen"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "am {day}. {month_gen} {year}"], 
+        ["y", 1, null, "am {day}. {month_gen} {year}"], 
+        ["d", null, -182, "am {day}. {month_gen} {year}"], 
+        ["d", -1, 0, "gestern"], 
+        ["d", 0, 1, "heute"], 
+        ["d", 1, 2, "morgen"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

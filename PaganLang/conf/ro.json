@@ -1,0 +1,155 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["ian", "feb", "mar", "apr", "mai", "iunie", "iulie", "aug", "sept", "oct", "nov", "dec"],
+        "month_gen": ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"],
+        "Month": ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"],
+        "Month_gen": ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ieri la {hour}:{minute}"], 
+        ["d", 0, 1, "azi la {hour}:{minute}"], 
+        ["d", 1, 2, "mâine la {hour}:{minute}"], 
+        "{day} {mon_gen} {year} la orele {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ieri, {num_hour}:{minute}"], 
+        ["d", 0, 1, "astăzi, {num_hour}:{minute} "], 
+        ["d", 1, 2, "mâine, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} "
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ieri la orele {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "azi la orele {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "mâine la orele {hour}:{minute}:{second}"], 
+        "{day} {mon_gen} {year} la orele {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "Pe {day} {month_gen} {year} la {hour}:{minute}"], 
+        ["y", 1, null, "Pe {day} {month_gen} {year} la {hour}:{minute}"], 
+        ["d", null, -182, "Pe {day} {month_gen} {year} la {hour}:{minute}"], 
+        ["d", -1, 0, "ieri la {hour}:{minute}"], 
+        ["d", 0, 1, "azi la {hour}:{minute}"], 
+        ["d", 1, 2, "mâine la {hour}:{minute}"], 
+        "{day} {month_gen} la {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {mon_gen} {year}"], 
+        ["y", 1, null, "{day} {mon_gen} {year}"], 
+        ["d", null, -182, "{day} {mon_gen} {year}"], 
+        ["d", -1, 0, "ieri la {hour}:{minute}"], 
+        ["d", 0, 1, "azi la {hour}:{minute}"], 
+        ["d", 1, 2, "mâine la {hour}:{minute}"], 
+        "{day} {mon_gen} la {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "ieri"], 
+        ["d", 0, 1, "azi"], 
+        ["d", 1, 2, "mâine"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "ieri"], 
+        ["d", 0, 1, "azi"], 
+        ["d", 1, 2, "mâine"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 100,
+          "values": [1],
+          "variant": 1
+        }, 
+        {
+          "mod": 100,
+          "values": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+          "variant": 2
+        }
+      ],
+      "int": 3,
+      "float": 3
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

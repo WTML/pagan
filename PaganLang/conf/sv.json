@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Jan.", "Feb.", "Mar.", "Apr.", "Maj", "Jun.", "Jul.", "Aug.", "Sep.", "Okt.", "Nov.", "Dec."],
+        "month_gen": ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"],
+        "Month": ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"],
+        "Month_gen": ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "kl. {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "idag kl. {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "kl. {hour}:{minute} {am_pm}"], 
+        "kl. {hour}:{minute} {am_pm} den {mon_gen} {day}, {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "вчера, {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "сегодня, {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "завтра, {hour}:{minute} {am_pm}"], 
+        "{day}.{mm}.{short_year} {hour}:{minute} {am_pm}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Igår kl {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "Idag kl {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "I morgon kl{hour}:{minute}:{second} {am_pm}"], 
+        "kl {hour}:{minute}:{second} {am_pm} den {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{month_gen} {day}, {year} omkring {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, "{month_gen} {day}, {year} omkring {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, "{month_gen} {day}, {year} omkring {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "igår kl {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "idag kl {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "I morgon kl {hour}:{minute} {am_pm}"], 
+        "kl {hour}:{minute} {am_pm} den {month_gen} {day}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {mon_gen} {day}, {year}"], 
+        ["y", 1, null, " {mon_gen} {day}, {year}"], 
+        ["d", null, -182, " {mon_gen} {day}, {year}"], 
+        ["d", -1, 0, "igår kl {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "idag kl {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "I morgon kl {hour}:{minute} {am_pm}"], 
+        "kl {hour}:{minute} {am_pm} den {mon_gen} {day}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {month_gen} {day}, {year}"], 
+        ["y", 1, null, " {month_gen} {day}, {year}"], 
+        ["d", null, -182, " {month_gen} {day}, {year}"], 
+        ["d", -1, 0, "igår"], 
+        ["d", 0, 1, "i dag"], 
+        ["d", 1, 2, "i morgon"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {month_gen} {day}, {year}"], 
+        ["y", 1, null, " {month_gen} {day}, {year}"], 
+        ["d", null, -182, " {month_gen} {day}, {year}"], 
+        ["d", -1, 0, "igår"], 
+        ["d", 0, 1, "i dag"], 
+        ["d", 1, 2, "i morgon"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

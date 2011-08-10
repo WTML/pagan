@@ -1,0 +1,160 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["1 һара", "2 һара", "3 һара", "4 һара", "5 һара", "6 һара", "7 һара", "8 һара", "9 һара", "10 һара", "11 һара", "12 һара"],
+        "month_gen": ["нэгэ һарын", "хоёр һарын", "гурба һарын", "дүрбэ һарын", "таба һарын", "зургаа һарын", "долоо һарын", "найма һарын", "юһэ һарын", "арба һарын", "арбан нэгэ һарын", "арбан хоёр һарын"],
+        "Month": ["1-дүгээр һара", "2-дугаар һара", "3-дугаар һара", "4-дүгээр һара", "5-дугаар һара", "6-дугаар һара", "7-дугаар һара", "8-дугаар һара", "9-дүгээр һара", "10-дугаар һара", "11-дүгээр һара", "12-дугаар һара"],
+        "Month_gen": ["1-дүгээр һарын", "2-дугаар һарын", "3-дугаар һарын", "4-дүгээр һарын", "5-дугаар һарын", "6-дугаар һарын", "7-дугаар һарын", "8-дугаар һарын", "9-дүгээр һарын", "10-дугаар һарын", "11-дүгээр һарын", "Арбан хоёр"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "үсэгэлдэр {hour}:{minute}"], 
+        ["d", 0, 1, "мүнөөдэр {hour}:{minute}"], 
+        ["d", 1, 2, "үглөөдэр{hour}:{minute}"], 
+        " {year} оной {mon_gen} {day} {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Үсэгэлдэр, {num_hour}:{minute}"], 
+        ["d", 0, 1, "Мүнөөдэр:, {num_hour}:{minute}"], 
+        ["d", 1, 2, "Үглөөдэр, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "үсэгэлдэр {hour}:{minute}:{second} сагта"], 
+        ["d", 0, 1, "мүнөөдэр {hour}:{minute}:{second} сагта"], 
+        ["d", 1, 2, "үглөөдэр {hour}:{minute}:{second} сагта"], 
+        "{year} {mon_gen} {day}, {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} оной {month_gen} {day}, {hour}:{minute}"], 
+        ["y", 1, null, "{year} оной {month_gen} {day}, {hour}:{minute}"], 
+        ["d", null, -182, "{year} оной {month_gen} {day}, {hour}:{minute}"], 
+        ["d", -1, 0, "үсэгэлдэр, {hour}:{minute}"], 
+        ["d", 0, 1, "мүнөөдэр, {hour}:{minute}"], 
+        ["d", 1, 2, "үглөөдэр, {hour}:{minute}"], 
+        "{month_gen} {day}, {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} оной {mon_gen} {day}"], 
+        ["y", 1, null, "{year} оной {mon_gen} {day}"], 
+        ["d", null, -182, "{year} оной {mon_gen} {day}"], 
+        ["d", -1, 0, "үсэгэлдэр, {hour}:{minute}"], 
+        ["d", 0, 1, "мүнөөдэр, {hour}:{minute}"], 
+        ["d", 1, 2, "үглөөдэр, {hour}:{minute}"], 
+        "{mon_gen} {day}, {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} оной {month_gen} {day}"], 
+        ["y", 1, null, "{year} оной {month_gen} {day}"], 
+        ["d", null, -182, "{year} оной {month_gen} {day}"], 
+        ["d", -1, 0, "үсэгэлдэр"], 
+        ["d", 0, 1, "мүнөөдэр"], 
+        ["d", 1, 2, "үглөөдэр"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} оной {month_gen} {day}"], 
+        ["y", 1, null, "{year} оной {month_gen} {day}"], 
+        ["d", null, -182, "{year} оной {month_gen} {day}"], 
+        ["d", -1, 0, "үсэгэлдэр"], 
+        ["d", 0, 1, "мүнөөдэр"], 
+        ["d", 1, 2, "үглөөдэр"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 100,
+          "values": [11, 12, 13, 14],
+          "variant": 3
+        }, 
+        {
+          "mod": 10,
+          "values": [1],
+          "variant": 1
+        }, 
+        {
+          "mod": 10,
+          "values": [2, 3, 4],
+          "variant": 2
+        }
+      ],
+      "int": 3,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

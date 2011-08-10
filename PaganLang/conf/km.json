@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["មករា", "កុម្ភះ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ចិកា", "ធ្នូរ"],
+        "month_gen": ["មករា", "កុម្ភះ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ចិកា", "ធ្នូរ"],
+        "Month": ["មករា", "កុម្ភះ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ចិកា", "ធ្នូរ"],
+        "Month_gen": ["មករា", "កុម្ភះ", "មីនា", "មេសា", "ឧសភា", "មិថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ចិកា", "ធ្នូរ"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ម្សិលមិញ វេលា {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "ថ្ងៃនេះ វេលា {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "ស្អែក វេលា {hour}:{minute} {am_pm}"], 
+        "វេលា {hour}:{minute} {am_pm} នៅ {mon_gen} {day}, {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ពីម្សិលមិញនៅម៉ោង {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "ថ្ងៃនេះនៅម៉ោង  {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "ថ្ងៃស្អែកនៅម៉ោង  {hour}:{minute}:{second} {am_pm}"], 
+        "នៅម៉ោង {hour}:{minute}:{second} {am_pm} on {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "នៅថ្ងៃទី {day} {month_gen}, {year} វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, "នៅថ្ងៃទី {day} {month_gen}, {year} វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, "នៅថ្ងៃទី {day} {month_gen}, {year} វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "ម្សិលមិញ វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "ថ្ងៃនេះ វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "ថ្ងៃស្អែក វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        "វេលាម៉ោង {hour}:{minute} {am_pm} នៅថ្ងៃទី {day} {month_gen}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "នៅ {day} {mon_gen}, {year}"], 
+        ["y", 1, null, "នៅ {day} {mon_gen}, {year}"], 
+        ["d", null, -182, "នៅ {day} {mon_gen}, {year}"], 
+        ["d", -1, 0, "ម្សិលមិញ វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "ថ្ងៃនេះ វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "ថ្ងៃស្អែក វេលាម៉ោង {hour}:{minute} {am_pm}"], 
+        "វេលាម៉ោង {hour}:{minute} {am_pm} នៅថ្ងៃទី {day} {mon_gen}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "នៅ {day} {month_gen}, {year}"], 
+        ["y", 1, null, "នៅ {day} {month_gen}, {year}"], 
+        ["d", null, -182, "នៅ {day} {month_gen}, {year}"], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "នៅ {day} {month_gen}, {year}"], 
+        ["y", 1, null, "នៅ {day} {month_gen}, {year}"], 
+        ["d", null, -182, "នៅ {day} {month_gen}, {year}"], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

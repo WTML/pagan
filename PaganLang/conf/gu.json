@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."],
+        "month_gen": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "Month": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "Month_gen": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "yesterday at {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "today at {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "tomorrow at {hour}:{minute} {am_pm}"], 
+        "at {hour}:{minute} {am_pm} on {mon_gen} {day}, {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "on {month_gen} {day}, {year} at {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, "on {month_gen} {day}, {year} at {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, "on {month_gen} {day}, {year} at {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, null], 
+        ["y", 1, null, null], 
+        ["d", null, -182, null], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, null], 
+        ["y", 1, null, null], 
+        ["d", null, -182, null], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, null], 
+        ["y", 1, null, null], 
+        ["d", null, -182, null], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

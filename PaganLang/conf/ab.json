@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["ажьыр", "жәаб", "хәажә", "мшаҧ", "лаҵ", "рашә", "ҧхын", "нан", "цәыб", "жьҭ", "абҵ", "ҧхынҷ"],
+        "month_gen": ["ажьырныҳәа", "жәабран", "хәажәкыра", "мшаҧы", "лаҵара", "рашәара", "ҧхынгәы", "нанҳәа", "цәыббра", "жьҭаара", "абҵара", "ҧхынҷкәын"],
+        "Month": ["Ажьырныҳәа", "Жәабран", "Хәажәкыр", "Мшаҧы<br>", "Лаҵара<br>", "Рашәара", "Ҧхынгәы", "Нанҳәа", "Цәыббра<br>", "Жьҭаара", "Абҵара", "Ҧхынҷкәын"],
+        "Month_gen": ["Ажьырныҳәамза", "Жәабранмза", "Хәажәкырамза", "Мшаҧымза", "Лаҵарамза", "Рашәарамза", "Ҧхынгәымза", "Нанҳәамза", "Цәыббрамза", "Жьҭаарамза", "Абҵарамза", "Ҧхынҷкәынмза"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "иацы {hour}:{minute} рзы"], 
+        ["d", 0, 1, "иахьа {hour}:{minute} рзы"], 
+        ["d", 1, 2, "уаҵәы {hour}:{minute} рзы"], 
+        "{day} {mon_gen} {year} {hour}:{minute} рзы"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "вчера в {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "сегодня в {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "завтра в {hour}:{minute}:{second}"], 
+        "{day} {mon_gen} {year} в {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{month_gen}мза {day} {year} ш. {hour}:{minute} рзы"], 
+        ["y", 1, null, "{month_gen}мза {day} {year} ш. {hour}:{minute} рзы"], 
+        ["d", null, -182, "{month_gen}мза {day} {year} ш. {hour}:{minute} рзы"], 
+        ["d", -1, 0, "Иацы {hour}:{minute} рзы"], 
+        ["d", 0, 1, "Иахьа {hour}:{minute} рзы"], 
+        ["d", 1, 2, "Уаҵәы {hour}:{minute} рзы"], 
+        "{month_gen}. {day} {hour}:{minute} рзы"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {mon_gen} {day} {year}ш. рзы"], 
+        ["y", 1, null, " {mon_gen} {day} {year}ш. рзы"], 
+        ["d", null, -182, " {mon_gen} {day} {year}ш. рзы"], 
+        ["d", -1, 0, "Иацы {hour}:{minute} рзы"], 
+        ["d", 0, 1, "Иахьа {hour}:{minute} рзы"], 
+        ["d", 1, 2, "Уаҵәы {hour}:{minute} рзы"], 
+        "{mon_gen}. {day} {hour}:{minute} рзы"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {month_gen} {day} {year}ш. рзы"], 
+        ["y", 1, null, " {month_gen} {day} {year}ш. рзы"], 
+        ["d", null, -182, " {month_gen} {day} {year}ш. рзы"], 
+        ["d", -1, 0, "иацы"], 
+        ["d", 0, 1, "иахьа"], 
+        ["d", 1, 2, "уаҵәы"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {month_gen} {day} {year}ш. рзы"], 
+        ["y", 1, null, " {month_gen} {day} {year}ш. рзы"], 
+        ["d", null, -182, " {month_gen} {day} {year}ш. рзы"], 
+        ["d", -1, 0, "иацы"], 
+        ["d", 0, 1, "иахьа"], 
+        ["d", 1, 2, "уаҵәы"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

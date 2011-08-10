@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."],
+        "month_gen": ["Enero", "Pebrero", "Marso", "Abril", "Mayo", "Hunyo", "Hulyo", "Agosto", "Setyembre", "Oktubre", "Nobyembre", "Disyembre"],
+        "Month": ["Enero", "Pebrero", "Marso", "Abril", "Mayo", "Hunyo", "Hulyo", "Agosto", "Setyembre", "Oktubre", "Nobyembre", "Disyembre"],
+        "Month_gen": ["Enero", "Pebrero", "Marso", "Abril", "Mayo", "Hunyo", "Hulyo", "Agosto", "Setyembre", "Oktubre", "Nobyembre", "Disyembre"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Kahapon sa {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "Ngayon sa {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "Bukas sa {hour}:{minute} {am_pm}"], 
+        "Anumang araw sa {hour}:{minute} {am_pm} nuong {mon_gen} {day}, {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Kahapon, {num_hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "Ngayon, {num_hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "Bukas, {num_hour}:{minute} {am_pm}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} {am_pm}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "kahapon sa{hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "Ngayon sa{hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "Bukas sa {hour}:{minute}:{second} {am_pm}"], 
+        "sa {hour}:{minute}:{second} {am_pm} on {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " Noong {month_gen} {day}, {year} sa  {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, " Noong {month_gen} {day}, {year} sa  {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, " Noong {month_gen} {day}, {year} sa  {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "kahapon sa {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "Ngayon sa {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "Bukas sa {hour}:{minute} {am_pm}"], 
+        "sa {hour}:{minute} {am_pm} on {month_gen} {day}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "nuong {mon_gen} {day}, {year}"], 
+        ["y", 1, null, "nuong {mon_gen} {day}, {year}"], 
+        ["d", null, -182, "nuong {mon_gen} {day}, {year}"], 
+        ["d", -1, 0, "kahapon sa {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "Ngayon sa {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "Bukas sa {hour}:{minute} {am_pm}"], 
+        "sa {hour}:{minute} {am_pm} on {mon_gen} {day}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "nuong {month_gen} {day}, {year}"], 
+        ["y", 1, null, "nuong {month_gen} {day}, {year}"], 
+        ["d", null, -182, "nuong {month_gen} {day}, {year}"], 
+        ["d", -1, 0, ""], 
+        ["d", 0, 1, ""], 
+        ["d", 1, 2, ""], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "nuong {month_gen} {day}, {year}"], 
+        ["y", 1, null, "nuong {month_gen} {day}, {year}"], 
+        ["d", null, -182, "nuong {month_gen} {day}, {year}"], 
+        ["d", -1, 0, ""], 
+        ["d", 0, 1, ""], 
+        ["d", 1, 2, ""], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        "month_gen": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        "Month": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+        "Month_gen": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "昨日 {hour}:{minute}"], 
+        ["d", 0, 1, "今日 {hour}:{minute}"], 
+        ["d", 1, 2, "明日 {hour}:{minute}"], 
+        "{year}年{mon_gen}{day}日 {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "昨日 {num_hour}:{minute}"], 
+        ["d", 0, 1, "今日 {num_hour}:{minute}"], 
+        ["d", 1, 2, "明日 {num_hour}:{minute}"], 
+        "{short_year}年{mm}月{num_day}日 {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "昨日 {am_pm}{hour}:{minute}:{second}に"], 
+        ["d", 0, 1, "今日 {am_pm}{hour}:{minute}:{second}に"], 
+        ["d", 1, 2, "明日 {am_pm}{hour}:{minute}:{second}に"], 
+        "{year}年{mon_gen}{day}日 {am_pm}{hour}:{minute}:{second}に"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}年{month_gen}{day}日 {hour}:{minute}"], 
+        ["y", 1, null, "{year}年{month_gen}{day}日 {hour}:{minute}"], 
+        ["d", null, -182, "{year}年{month_gen}{day}日 {hour}:{minute}"], 
+        ["d", -1, 0, "昨日 {hour}:{minute}"], 
+        ["d", 0, 1, "今日 {hour}:{minute}"], 
+        ["d", 1, 2, "明日 {hour}:{minute}"], 
+        "{month_gen}{day}日 {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}年{mon_gen}{day}日"], 
+        ["y", 1, null, "{year}年{mon_gen}{day}日"], 
+        ["d", null, -182, "{year}年{mon_gen}{day}日"], 
+        ["d", -1, 0, "昨日 {hour}:{minute}"], 
+        ["d", 0, 1, "今日 {hour}:{minute}"], 
+        ["d", 1, 2, "明日 {hour}:{minute}"], 
+        "{mon_gen}{day}日 {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}年{month_gen}{day}日"], 
+        ["y", 1, null, "{year}年{month_gen}{day}日"], 
+        ["d", null, -182, "{year}年{month_gen}{day}日"], 
+        ["d", -1, 0, "昨日"], 
+        ["d", 0, 1, "今日"], 
+        ["d", 1, 2, "明日"], 
+        "{month_gen}{day}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}年{month_gen}{day}日"], 
+        ["y", 1, null, "{year}年{month_gen}{day}日"], 
+        ["d", null, -182, "{year}年{month_gen}{day}日"], 
+        ["d", -1, 0, "昨日"], 
+        ["d", 0, 1, "今日"], 
+        ["d", 1, 2, "明日"], 
+        "{month_gen}{day}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

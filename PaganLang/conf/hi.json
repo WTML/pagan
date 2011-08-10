@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितम्बर", "अक्टूबर", "नवम्बर", "दिसम्बर"],
+        "month_gen": ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितम्बर", "अक्टूबर", "नवम्बर", "दिसम्बर"],
+        "Month": ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितम्बर", "अक्टूबर", "नवम्बर", "दिसम्बर"],
+        "Month_gen": ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितम्बर", "अक्टूबर", "नवम्बर", "दिसम्बर"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "बीते कल {hour}:{minute} {am_pm} बजे "], 
+        ["d", 0, 1, " आज  {hour}:{minute} {am_pm} बजे "], 
+        ["d", 1, 2, "कल  को  {hour}:{minute} {am_pm} बजे"], 
+        "  {hour}:{minute} {am_pm} बजे  {mon_gen} {day}, {year} को"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "बीते कल, {num_hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "आज, {num_hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "कल, {num_hour}:{minute} {am_pm}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} {am_pm}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "{hour}:{minute}:{second} {am_pm} पर बीते कल "], 
+        ["d", 0, 1, "{hour}:{minute}:{second} {am_pm}  पर  आज "], 
+        ["d", 1, 2, "{hour}:{minute}:{second} {am_pm} पर कल को"], 
+        "{hour}:{minute}:{second} {am_pm} पर {mon_gen} {day}, {year} को"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{month_gen} {day}, {year} को {hour}:{minute} {am_pm} पर  "], 
+        ["y", 1, null, "{month_gen} {day}, {year} को {hour}:{minute} {am_pm} पर  "], 
+        ["d", null, -182, "{month_gen} {day}, {year} को {hour}:{minute} {am_pm} पर  "], 
+        ["d", -1, 0, "कल {hour}:{minute} {am_pm} पर "], 
+        ["d", 0, 1, "आज {hour}:{minute} {am_pm} पर "], 
+        ["d", 1, 2, "कल {hour}:{minute} {am_pm} पर"], 
+        "{hour}:{minute} {am_pm} पर {month_gen} {day} को "
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{mon_gen} {day}, {year} को "], 
+        ["y", 1, null, "{mon_gen} {day}, {year} को "], 
+        ["d", null, -182, "{mon_gen} {day}, {year} को "], 
+        ["d", -1, 0, "कल {hour}:{minute} {am_pm} पर "], 
+        ["d", 0, 1, "आज {hour}:{minute} {am_pm} पर "], 
+        ["d", 1, 2, "कल {hour}:{minute} {am_pm} पर"], 
+        "{hour}:{minute} {am_pm} पर {mon_gen} {day} को "
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{month_gen} {day}, {year} को "], 
+        ["y", 1, null, "{month_gen} {day}, {year} को "], 
+        ["d", null, -182, "{month_gen} {day}, {year} को "], 
+        ["d", -1, 0, "बीते कल "], 
+        ["d", 0, 1, "आज"], 
+        ["d", 1, 2, " कल "], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{month_gen} {day}, {year} को "], 
+        ["y", 1, null, "{month_gen} {day}, {year} को "], 
+        ["d", null, -182, "{month_gen} {day}, {year} को "], 
+        ["d", -1, 0, "बीते कल "], 
+        ["d", 0, 1, "आज"], 
+        ["d", 1, 2, " कल "], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

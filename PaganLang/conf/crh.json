@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["yan", "fev", "mar", "apr", "may", "iyün", "iyül", "avg", "sen", "okt", "noy", "dek"],
+        "month_gen": ["yanvar", "fevral", "mart", "aprel", "mayıs", "iyün", "iyül", "avgust", "sentâbr", "oktâbr", "noyabr", "dekabr"],
+        "Month": ["Yanvar", "Fevral", "Mart", "Aprel", "Mayıs", "İyün", "İyül", "Avgust", "Sentâbr", "Oktâbr", "Noyabr", "Dekabr"],
+        "Month_gen": ["Yanvar", "Fevral", "Mart", "Aprel", "Mayıs", "İyün", "İyül", "Avgust", "Sentâbr", "Oktâbr", "Noyabr", "Dekabrnıñ"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "tünevin, {hour}:{minute}"], 
+        ["d", 0, 1, "bugün, {hour}:{minute}"], 
+        ["d", 1, 2, "yarın, {hour}:{minute}"], 
+        "{year} s. {mon_gen} {day}, {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}, {hour}:{minute}"], 
+        ["y", 1, null, "{year} {month_gen} {day}, {hour}:{minute}"], 
+        ["d", null, -182, "{year} {month_gen} {day}, {hour}:{minute}"], 
+        ["d", -1, 0, "tünevin, {hour}:{minute}"], 
+        ["d", 0, 1, "bugün, {hour}:{minute}"], 
+        ["d", 1, 2, "yarın, {hour}:{minute}"], 
+        "{month_gen} {day}, {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {mon_gen} {day}"], 
+        ["y", 1, null, "{year} {mon_gen} {day}"], 
+        ["d", null, -182, "{year} {mon_gen} {day}"], 
+        ["d", -1, 0, "tünevin, {hour}:{minute}"], 
+        ["d", 0, 1, "bugün, {hour}:{minute}"], 
+        ["d", 1, 2, "yarın, {hour}:{minute}"], 
+        "{mon_gen} {day}, {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}"], 
+        ["y", 1, null, "{year} {month_gen} {day}"], 
+        ["d", null, -182, "{year} {month_gen} {day}"], 
+        ["d", -1, 0, "tünevin"], 
+        ["d", 0, 1, "bugün"], 
+        ["d", 1, 2, "yarın"], 
+        "{month_gen} {day}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day}"], 
+        ["y", 1, null, "{year} {month_gen} {day}"], 
+        ["d", null, -182, "{year} {month_gen} {day}"], 
+        ["d", -1, 0, "tünevin"], 
+        ["d", 0, 1, "bugün"], 
+        ["d", 1, 2, "yarın"], 
+        "{month_gen} {day}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

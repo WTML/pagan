@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Januari", "Februari", "Machi", "Aprili", "Mei", "Juni", "Julai", "Agosti", "Septemba", "Oktoba", "Novemba", "Desemba"],
+        "month_gen": ["Januari", "Februari", "Machi", "Aprili", "Mei", "Juni", "Julai", "Agosti", "Septemba", "Oktoba", "Novemba", "Desemba"],
+        "Month": ["Januari", "Februari", "Machi", "Aprili", "Mei", "Juni", "Julai", "Agosti", "Septemba", "Oktoba", "Novemba", "Desemba"],
+        "Month_gen": ["Januari", "Februari", "Machi", "Aprili", "Mei", "Juni", "Julai", "Agosti", "Septemba", "Oktoba", "Novemba", "Desemba"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Jana saa {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "Leo saa {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "Kesho saa  {hour}:{minute} {am_pm}"], 
+        "Saa {hour}:{minute} {am_pm} tahere {mon_gen} {day}, {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Jana, {num_hour}:{minute}"], 
+        ["d", 0, 1, "Leo, {num_hour}:{minute}"], 
+        ["d", 1, 2, "Kesho, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Jana saa {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "Leo saa {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "Kesho saa {hour}:{minute}:{second} {am_pm}"], 
+        "Saa {hour}:{minute}:{second} {am_pm} tarehe {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "Tarehe {month_gen} {day}, {year} saa {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, "Tarehe {month_gen} {day}, {year} saa {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, "Tarehe {month_gen} {day}, {year} saa {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "Jana saa {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "Leo saa {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "Kesho saa {hour}:{minute} {am_pm}"], 
+        "Saa {hour}:{minute} {am_pm} tarehe {month_gen} {day}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "Tarehe {mon_gen} {day}, {year}"], 
+        ["y", 1, null, "Tarehe {mon_gen} {day}, {year}"], 
+        ["d", null, -182, "Tarehe {mon_gen} {day}, {year}"], 
+        ["d", -1, 0, "Jana saa {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "Leo saa {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "Kesho saa {hour}:{minute} {am_pm}"], 
+        "Saa {hour}:{minute} {am_pm} tarehe {mon_gen} {day}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "Tarehe {month_gen} {day}, {year}"], 
+        ["y", 1, null, "Tarehe {month_gen} {day}, {year}"], 
+        ["d", null, -182, "Tarehe {month_gen} {day}, {year}"], 
+        ["d", -1, 0, "Jana"], 
+        ["d", 0, 1, "leo"], 
+        ["d", 1, 2, "Kesho"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "Tarehe {month_gen} {day}, {year}"], 
+        ["y", 1, null, "Tarehe {month_gen} {day}, {year}"], 
+        ["d", null, -182, "Tarehe {month_gen} {day}, {year}"], 
+        ["d", -1, 0, "Jana"], 
+        ["d", 0, 1, "leo"], 
+        ["d", 1, 2, "Kesho"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

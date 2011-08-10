@@ -1,0 +1,160 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Jan.", "Feb.", "Mar.", "Apr.", "Maj", "Jun.", "Jul.", "Avg.", "Sep.", "Okt.", "Nov.", "Dec."],
+        "month_gen": ["Januar\/Siječanj", "Februar\/Veljača", "Mart\/Ožujak", "April\/Travanj", "Maj\/Svibanj", "Juni\/Lipanj", "Juli\/Srpanj", "Avgust\/Kolovoz", "Septembar\/Rujan", "Oktobar\/Listopad", "Novembar\/Studeni", "Decembar\/Prosinac"],
+        "Month": ["Januar\/Siječanj", "Februar\/Veljača", "Mart\/Ožujak", "April\/Travanj", "Maj\/Svibanj", "Juni\/Lipanj", "Juli\/Srpanj", "Avgust\/Kolovoz", "Septembar\/Rujan", "Oktobar\/Listopad", "Novembar\/Studeni", "Decembar\/Prosinac"],
+        "Month_gen": ["Januar\/Siječanj", "Februar\/Veljača", "Mart\/Ožujak", "April\/Travanj", "Maj\/Svibanj", "Juni\/Lipanj", "Juli\/Srpanj", "Avgust\/Kolovoz", "Septembar\/Rujan", "Oktobar\/Listopad", "Novembar\/Studeni", "Decembar\/Prosinac"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "juče u {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "danas u {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "sutra u {hour}:{minute} {am_pm}"], 
+        "u {hour}:{minute} {am_pm}, {day}. {mon_gen} {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "juče, {num_hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "danas, {num_hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "sutra, {num_hour}:{minute} {am_pm}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} {am_pm}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "juče u {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "danas u {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "sutra u {hour}:{minute}:{second} {am_pm}"], 
+        "u {hour}:{minute}:{second} {am_pm} u {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {day}. {month_gen} {year} u {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, " {day}. {month_gen} {year} u {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, " {day}. {month_gen} {year} u {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "jučer u {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "danas u {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "sutra u {hour}:{minute} {am_pm}"], 
+        "u {hour}:{minute} {am_pm} {day}. {month_gen}  "
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day}. {mon_gen}, {year}"], 
+        ["y", 1, null, "{day}. {mon_gen}, {year}"], 
+        ["d", null, -182, "{day}. {mon_gen}, {year}"], 
+        ["d", -1, 0, "jučer u {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "danas u {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "sutra u {hour}:{minute} {am_pm}"], 
+        "u {hour}:{minute} {am_pm} {day}. {mon_gen}  "
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day}. {month_gen}, {year}"], 
+        ["y", 1, null, "{day}. {month_gen}, {year}"], 
+        ["d", null, -182, "{day}. {month_gen}, {year}"], 
+        ["d", -1, 0, ""], 
+        ["d", 0, 1, ""], 
+        ["d", 1, 2, ""], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day}. {month_gen}, {year}"], 
+        ["y", 1, null, "{day}. {month_gen}, {year}"], 
+        ["d", null, -182, "{day}. {month_gen}, {year}"], 
+        ["d", -1, 0, ""], 
+        ["d", 0, 1, ""], 
+        ["d", 1, 2, ""], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 100,
+          "values": [11, 12, 13, 14],
+          "variant": 3
+        }, 
+        {
+          "mod": 10,
+          "values": [1],
+          "variant": 1
+        }, 
+        {
+          "mod": 10,
+          "values": [2, 3, 4],
+          "variant": 2
+        }
+      ],
+      "int": 3,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

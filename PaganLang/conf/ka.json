@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["იანვ", "თებერვ", "მარ", "აპრ", "მაისი", "ივნ", "ივლ", "აგვ", "სექ", "ოქტ", "ნოემ", "დეკ"],
+        "month_gen": ["იანვარი", "თებერვალი", "მარტი", "აპრილი", "მაისი", "ივნისი", "ივლისი", "აგვისტო", "სექტემბერი", "ოქტომბერი", "ნოემბერი", "დეკემბერი"],
+        "Month": ["იანვარი", "თებერვალი", "მარტი", "აპრილი", "მაისი", "ივნისი", "ივლისი", "აგვისტო", "სექტემბერი", "ოქტომბერი", "ნოემბერი", "დეკემბერი"],
+        "Month_gen": ["იანვარი", "თებერვალი", "მარტი", "აპრილი", "მაისი", "ივნისი", "ივლისი", "აგვისტო", "სექტემბერი", "ოქტომბერი", "ნოემბერი", "დეკემბერი"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "გუშინ {hour}:{minute}"], 
+        ["d", 0, 1, "დღეს {hour}:{minute}"], 
+        ["d", 1, 2, "ხვალ {hour}:{minute}"], 
+        "{day} {mon_gen} {year}  {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "გუშინ, {num_hour}:{minute}"], 
+        ["d", 0, 1, "დღეს, {num_hour}:{minute}"], 
+        ["d", 1, 2, "ხვალ, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "გუშინ {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "დღეს {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "ხვალ {hour}:{minute}:{second}"], 
+        "{day} {mon_gen} {year}  {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}  {hour}:{minute}–ზე"], 
+        ["y", 1, null, "{day} {month_gen} {year}  {hour}:{minute}–ზე"], 
+        ["d", null, -182, "{day} {month_gen} {year}  {hour}:{minute}–ზე"], 
+        ["d", -1, 0, "გუშინ {hour}:{minute}"], 
+        ["d", 0, 1, "დღეს {hour}:{minute}"], 
+        ["d", 1, 2, "ხვალ {hour}:{minute}"], 
+        "{day} {month_gen}  {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {mon_gen} {year}"], 
+        ["y", 1, null, "{day} {mon_gen} {year}"], 
+        ["d", null, -182, "{day} {mon_gen} {year}"], 
+        ["d", -1, 0, "გუშინ {hour}:{minute}"], 
+        ["d", 0, 1, "დღეს {hour}:{minute}"], 
+        ["d", 1, 2, "ხვალ {hour}:{minute}"], 
+        "{day} {mon_gen}  {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "გუშინ"], 
+        ["d", 0, 1, "დღეს"], 
+        ["d", 1, 2, "ხვალ"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "გუშინ"], 
+        ["d", 0, 1, "დღეს"], 
+        ["d", 1, 2, "ხვალ"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

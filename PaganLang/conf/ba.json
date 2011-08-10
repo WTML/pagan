@@ -1,0 +1,344 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["ғин", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"],
+        "month_gen": ["ғинуар", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"],
+        "Month": ["Ғинуар", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+        "Month_gen": ["Ғинуарҙың", "Февралдең", "Марттың", "Апрелдең", "Майҙың", "Июндең", "Июлдең", "Августың", "Сентябрҙең", "Октябрҙең", "Ноябрҙең", "Декабрҙең"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "кисә сәғ. {hour}:{minute}"], 
+        ["d", 0, 1, "бөгөн сәғ. {hour}:{minute}"], 
+        ["d", 1, 2, "иртәгә сәғ. {hour}:{minute}"], 
+        "{mon_gen} {day} {year}, сәғ. {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "кисә, {num_hour}:{minute}"], 
+        ["d", 0, 1, "бөгөн, {num_hour}:{minute}"], 
+        ["d", 1, 2, "иртәгә, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "кисә сәғ.{hour}:{minute}:{second}"], 
+        ["d", 0, 1, "бөгөн сәғ.{hour}:{minute}:{second}"], 
+        ["d", 1, 2, "иртәгә сәғ.{hour}:{minute}:{second}"], 
+        "{day} {mon_gen} {year} сәғ. {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen}, {year} йыл сәғ. {hour}:{minute}"], 
+        ["y", 1, null, "{day} {month_gen}, {year} йыл сәғ. {hour}:{minute}"], 
+        ["d", null, -182, "{day} {month_gen}, {year} йыл сәғ. {hour}:{minute}"], 
+        ["d", -1, 0, "кисә сәғ. {hour}:{minute}"], 
+        ["d", 0, 1, "бөгөн сәғ. {hour}:{minute}"], 
+        ["d", 1, 2, "иртәгә сәғ. {hour}:{minute}"], 
+        "{day} {month_gen} сәғ. {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {mon_gen} {year}"], 
+        ["y", 1, null, "{day} {mon_gen} {year}"], 
+        ["d", null, -182, "{day} {mon_gen} {year}"], 
+        ["d", -1, 0, "кисә сәғ. {hour}:{minute}"], 
+        ["d", 0, 1, "бөгөн сәғ. {hour}:{minute}"], 
+        ["d", 1, 2, "иртәгә сәғ. {hour}:{minute}"], 
+        "{day} {mon_gen} сәғ. {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "кисә"], 
+        ["d", 0, 1, "бөгөн"], 
+        ["d", 1, 2, "иртәгә"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "кисә"], 
+        ["d", 0, 1, "бөгөн"], 
+        ["d", 1, 2, "иртәгә"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname_flex": {
+      "type": "flex",
+      "from": "{original.first_name}",
+      "to": "{current.first_name}",
+      "flexible": "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщьэюяQWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm",
+      "group": "fnameGen,fnameDat,fnameAcc,fnameIns,fnameAbl",
+      "patterns": [
+        {
+          "search": "~а,~о,~ы,~э,~е,~я,~ё",
+          "replace": [
+            {
+              "out": "~ның,~ға,~ны,~нан,~ла"
+            }
+          ]
+        }, 
+        {
+          "search": "~у,~р,~и,~й,~ю",
+          "replace": [
+            {
+              "out": "~ҙың,~ға,~ҙы,~ҙан,~ҙа"
+            }
+          ]
+        }, 
+        {
+          "search": "~р~ь",
+          "replace": [
+            {
+              "out": "~ҙең,~гә,~ҙе,~ҙән,~ҙә"
+            }
+          ]
+        }, 
+        {
+          "search": "~н,~л,~м,~з,~ж",
+          "replace": [
+            {
+              "out": "~дың,~ға,~ды,~дан,~да"
+            }
+          ]
+        }, 
+        {
+          "search": "~н~ь,~л~ь,~м~ь,~з~ь",
+          "replace": [
+            {
+              "out": "~дең,~гә,~де,~дән,~дә"
+            }
+          ]
+        }, 
+        {
+          "search": "~ц,~к,~г,~ш,~щ,~х,~ф,~в,~п,~ч,~с,~т,~б",
+          "replace": [
+            {
+              "out": "~тың,~ҡа,~ты,~тан,~та"
+            }
+          ]
+        }, 
+        {
+          "search": "~к~ь,~г~ь,~ф~ь,~в~ь,~п~ь,~с~ь,~т~ь,~б~ь",
+          "replace": [
+            {
+              "out": "~тең,~кә,~те,~тән,~тә"
+            }
+          ]
+        }, 
+        {
+          "search": "~a,~o,~e",
+          "replace": [
+            {
+              "out": "~’ның,~’ға,~’ны,~’нан,~’ла"
+            }
+          ]
+        }, 
+        {
+          "search": "~u,~r,~i,~y,~w",
+          "replace": [
+            {
+              "out": "~’ҙың,~’ға,~’ҙы,~’ҙан,~’ҙа"
+            }
+          ]
+        }, 
+        {
+          "search": "~n,~l,~m,~z,~j",
+          "replace": [
+            {
+              "out": "~’дың,~’ға,~’ды,~’дан,~’да"
+            }
+          ]
+        }, 
+        {
+          "search": "~q,~t,~p,~s,~d,~f,~g,~h,~k,~x,~c,~v,~b",
+          "replace": [
+            {
+              "out": "~’тың,~’ҡа,~’ты,~’тан,~’та"
+            }
+          ]
+        }
+      ]
+    },
+    "lname_flex": {
+      "type": "flex",
+      "from": ["{original.last_name}", "{original.nickname}"],
+      "to": ["{current.last_name}", "{current.nickname}"],
+      "flexible": "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщьэюяQWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm",
+      "group": "lnameGen,lnameDat,lnameAcc,lnameIns,lnameAbl",
+      "patterns": [
+        {
+          "search": "~а,~о,~ы,~э,~е,~я,~ё",
+          "replace": [
+            {
+              "out": "~ның,~ға,~ны,~нан,~ла"
+            }
+          ]
+        }, 
+        {
+          "search": "~у,~р,~и,~й,~ю",
+          "replace": [
+            {
+              "out": "~ҙың,~ға,~ҙы,~ҙан,~ҙа"
+            }
+          ]
+        }, 
+        {
+          "search": "~р~ь",
+          "replace": [
+            {
+              "out": "~ҙең,~гә,~ҙе,~ҙән,~ҙә"
+            }
+          ]
+        }, 
+        {
+          "search": "~н,~л,~м,~з,~ж",
+          "replace": [
+            {
+              "out": "~дың,~ға,~ды,~дан,~да"
+            }
+          ]
+        }, 
+        {
+          "search": "~н~ь,~л~ь,~м~ь,~з~ь",
+          "replace": [
+            {
+              "out": "~дең,~гә,~де,~дән,~дә"
+            }
+          ]
+        }, 
+        {
+          "search": "~ц,~к,~г,~ш,~щ,~х,~ф,~в,~п,~ч,~с,~т,~б",
+          "replace": [
+            {
+              "out": "~тың,~ҡа,~ты,~тан,~та"
+            }
+          ]
+        }, 
+        {
+          "search": "~к~ь,~г~ь,~ф~ь,~в~ь,~п~ь,~с~ь,~т~ь,~б~ь",
+          "replace": [
+            {
+              "out": "~тең,~кә,~те,~тән,~тә"
+            }
+          ]
+        }, 
+        {
+          "search": "~a,~o,~e",
+          "replace": [
+            {
+              "out": "~’ның,~’ға,~’ны,~’нан,~’ла"
+            }
+          ]
+        }, 
+        {
+          "search": "~u,~r,~i,~y,~w",
+          "replace": [
+            {
+              "out": "~’ҙың,~’ға,~’ҙы,~’ҙан,~’ҙа"
+            }
+          ]
+        }, 
+        {
+          "search": "~n,~l,~m,~z,~j",
+          "replace": [
+            {
+              "out": "~’дың,~’ға,~’ды,~’дан,~’да"
+            }
+          ]
+        }, 
+        {
+          "search": "~q,~t,~p,~s,~d,~f,~g,~h,~k,~x,~c,~v,~b",
+          "replace": [
+            {
+              "out": "~’тың,~’ҡа,~’ты,~’тан,~’та"
+            }
+          ]
+        }
+      ]
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

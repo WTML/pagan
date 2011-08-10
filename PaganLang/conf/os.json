@@ -1,0 +1,200 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"],
+        "month_gen": ["январы", "февралы", "мартъийы", "апрелы", "майы", "июны", "июлы", "августы", "сентябры", "октябры", "ноябры", "декабры"],
+        "Month": ["Январь (тъæнджы мæй)", "Февраль (æртхъирæны мæй)", "Мартъи (тæргæйтты мæй)", "Апрель (хуымгæнæны мæй)", "Май (зæрдæвæрæны мæй)", "Июнь (хурхæтæны мæй)", "Июль (сусæны мæй)", "Август (майрæмы мæй)", "Сентябрь (рухæны мæй)", "Октябрь (кæфты мæй)", "Ноябрь (Джеоргуыбайы мæй)", "Декабрь (цыппурсы мæй)"],
+        "Month_gen": ["Январы", "Февралы", "Мартъийы", "Апрелы", "Майы", "Июны", "Июлы", "Августы", "Сентябры", "Октябры", "Ноябры", "Декабры"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "знон, {hour}:{minute}"], 
+        ["d", 0, 1, "абон, {hour}:{minute}"], 
+        ["d", 1, 2, "райсом, {hour}:{minute}"], 
+        "{year}æм азы {day} {mon_gen}, {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "знон, {num_hour}:{minute}"], 
+        ["d", 0, 1, "абон, {num_hour}:{minute}"], 
+        ["d", 1, 2, "райсом, {num_hour}:{minute}"], 
+        "{short_year}. {num_day}.{mm} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "знон {hour}:{minute}:{second} -ыл"], 
+        ["d", 0, 1, "абон  {hour}:{minute}:{second} -ыл"], 
+        ["d", 1, 2, "райсом {hour}:{minute}:{second} -ыл"], 
+        "{day} {mon_gen} {year}  {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} {month_gen} {day} , {hour}:{minute}"], 
+        ["y", 1, null, "{year} {month_gen} {day} , {hour}:{minute}"], 
+        ["d", null, -182, "{year} {month_gen} {day} , {hour}:{minute}"], 
+        ["d", -1, 0, "знон, {hour}:{minute}"], 
+        ["d", 0, 1, "абон, {hour}:{minute}"], 
+        ["d", 1, 2, "райсом, {hour}:{minute}"], 
+        "{day} {month_gen}, {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}-æм азы  {mon_gen} {day} бон"], 
+        ["y", 1, null, "{year}-æм азы  {mon_gen} {day} бон"], 
+        ["d", null, -182, "{year}-æм азы  {mon_gen} {day} бон"], 
+        ["d", -1, 0, "знон, {hour}:{minute}"], 
+        ["d", 0, 1, "абон, {hour}:{minute}"], 
+        ["d", 1, 2, "райсом, {hour}:{minute}"], 
+        "{day} {mon_gen}, {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}-æм азы  {month_gen} {day} бон"], 
+        ["y", 1, null, "{year}-æм азы  {month_gen} {day} бон"], 
+        ["d", null, -182, "{year}-æм азы  {month_gen} {day} бон"], 
+        ["d", -1, 0, "знон"], 
+        ["d", 0, 1, "абон"], 
+        ["d", 1, 2, "райсом"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}-æм азы  {month_gen} {day} бон"], 
+        ["y", 1, null, "{year}-æм азы  {month_gen} {day} бон"], 
+        ["d", null, -182, "{year}-æм азы  {month_gen} {day} бон"], 
+        ["d", -1, 0, "знон"], 
+        ["d", 0, 1, "абон"], 
+        ["d", 1, 2, "райсом"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname_flex": {
+      "type": "flex",
+      "from": "{original.first_name}",
+      "to": "{current.first_name}",
+      "flexible": "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщьэюя;",
+      "group": "fnameGen,fnameDat,fnameAcc,fnameIns,fnameAbl",
+      "patterns": [
+        {
+          "search": "~ау,~еу,~иу,~ыу,~оу,~уу,~юу,~яу,~ёу,~æу",
+          "replace": [
+            {
+              "out": "~ы,~æн,~мæ,~ы,~æй,~ыл,~ау,~имæ"
+            }
+          ]
+        }, 
+        {
+          "search": "~а,~е,~и,~ы,~о,~у,~ю,~я,~ё,~æ",
+          "replace": [
+            {
+              "out": "~йы,~йæн,~мæ,~йы,~йæ,~йыл,~йау,~имæ"
+            }
+          ]
+        }, 
+        {
+          "search": "~",
+          "replace": [
+            {
+              "out": "~ы,~æн,~мæ,~ы,~æй,~ыл,~ау,~имæ"
+            }
+          ]
+        }
+      ]
+    },
+    "lname_flex": {
+      "type": "flex",
+      "from": ["{original.last_name}", "{original.nickname}"],
+      "to": ["{current.last_name}", "{current.nickname}"],
+      "flexible": "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщьэюя;",
+      "group": "lnameGen,lnameDat,lnameAcc,lnameIns,lnameAbl",
+      "patterns": [
+        {
+          "search": "~",
+          "replace": [
+            {
+              "out": ""
+            }
+          ]
+        }
+      ]
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

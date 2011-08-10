@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["januaro", "februaro", "marto", "aprilo", "majo", "junio", "julio", "aŭgusto", "septembro", "oktobro", "novembro", "decembro"],
+        "month_gen": ["de januaro", "de februaro", "de marto", "de aprilo", "de majo", "de junio", "de julio", "de aŭgusto", "de septembro", "de oktobro", "de novembro", "de decembro"],
+        "Month": ["Januaro", "Februaro", "Marto", "Aprilo", "Majo", "Junio", "Julio", "Aŭgusto", "Septembro", "Oktobro", "Novembro", "Decembro"],
+        "Month_gen": ["Januaro", "Februaro", "Marto", "Aprilo", "Majo", "Junio", "Julio", "Aŭgusto", "Septembro", "Oktobro", "Novembro", "Decembro"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "hieraŭ je {hour}:{minute}"], 
+        ["d", 0, 1, "hodiaŭ je {hour}:{minute}"], 
+        ["d", 1, 2, "morgaŭ je {hour}:{minute}"], 
+        "{day}-an de {mon_gen} {year} je {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "hieraŭ, {num_hour}:{minute}"], 
+        ["d", 0, 1, "hodiaŭ, {num_hour}:{minute}"], 
+        ["d", 1, 2, "morgaŭ, {num_hour}:{minute}"], 
+        "La {num_day}.-an de {mm}.,{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "hieraŭ en {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "hieraŭ en {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "hieraŭ en {hour}:{minute}:{second}"], 
+        "La {day} de {mon_gen}, {year} en {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day}-an  {month_gen} {year} je {hour}:{minute}"], 
+        ["y", 1, null, "{day}-an  {month_gen} {year} je {hour}:{minute}"], 
+        ["d", null, -182, "{day}-an  {month_gen} {year} je {hour}:{minute}"], 
+        ["d", -1, 0, "hieraŭ je {hour}:{minute}"], 
+        ["d", 0, 1, "hodiaŭ je {hour}:{minute}"], 
+        ["d", 1, 2, "morgaŭ je {hour}:{minute}"], 
+        "{day}-an de {month_gen} je {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "la {day}-an {mon_gen} {year}"], 
+        ["y", 1, null, "la {day}-an {mon_gen} {year}"], 
+        ["d", null, -182, "la {day}-an {mon_gen} {year}"], 
+        ["d", -1, 0, "hieraŭ je {hour}:{minute}"], 
+        ["d", 0, 1, "hodiaŭ je {hour}:{minute}"], 
+        ["d", 1, 2, "morgaŭ je {hour}:{minute}"], 
+        "{day}-an de {mon_gen} je {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "la {day}-an {month_gen} {year}"], 
+        ["y", 1, null, "la {day}-an {month_gen} {year}"], 
+        ["d", null, -182, "la {day}-an {month_gen} {year}"], 
+        ["d", -1, 0, "hieraŭ"], 
+        ["d", 0, 1, "hodiaŭ"], 
+        ["d", 1, 2, "morgaŭ"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "la {day}-an {month_gen} {year}"], 
+        ["y", 1, null, "la {day}-an {month_gen} {year}"], 
+        ["d", null, -182, "la {day}-an {month_gen} {year}"], 
+        ["d", -1, 0, "hieraŭ"], 
+        ["d", 0, 1, "hodiaŭ"], 
+        ["d", 1, 2, "morgaŭ"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

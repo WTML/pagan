@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Jan.", "Feb.", "Mars", "Apr.", "Mai", "Jun.", "Juli", "Aug.", "Sept.", "Okt.", "Nov.", "Des."],
+        "month_gen": ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"],
+        "Month": ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"],
+        "Month_gen": ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "i går klokken {hour}:{minute}"], 
+        ["d", 0, 1, "i dag klokken {hour}:{minute}"], 
+        ["d", 1, 2, "i morgen klokken {hour}:{minute}"], 
+        "{day} {mon_gen} {year} klokken {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "i går, {num_hour}:{minute}"], 
+        ["d", 0, 1, "i dag, {num_hour}:{minute}"], 
+        ["d", 1, 2, "i morgen, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "i går klokken {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "i dag klokken {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "i morgen klokken {hour}:{minute}:{second}"], 
+        "{day} {mon_gen} {year} klokken {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year} klokken {hour}:{minute}"], 
+        ["y", 1, null, "{day} {month_gen} {year} klokken {hour}:{minute}"], 
+        ["d", null, -182, "{day} {month_gen} {year} klokken {hour}:{minute}"], 
+        ["d", -1, 0, "i går klokken {hour}:{minute}"], 
+        ["d", 0, 1, "i dag klokken {hour}:{minute}"], 
+        ["d", 1, 2, "i går klokken {hour}:{minute}"], 
+        "{day} {month_gen} klokken {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {mon_gen} {year}"], 
+        ["y", 1, null, "{day} {mon_gen} {year}"], 
+        ["d", null, -182, "{day} {mon_gen} {year}"], 
+        ["d", -1, 0, "i går klokken {hour}:{minute}"], 
+        ["d", 0, 1, "i dag klokken {hour}:{minute}"], 
+        ["d", 1, 2, "i går klokken {hour}:{minute}"], 
+        "{day} {mon_gen} klokken {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "i går"], 
+        ["d", 0, 1, "i dag"], 
+        ["d", 1, 2, "i morgen"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "i går"], 
+        ["d", 0, 1, "i dag"], 
+        ["d", 1, 2, "i morgen"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

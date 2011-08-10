@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["janv.", "febr.", "mar.", "apr.", "maijā", "jun.", "jūl.", "aug.", "sep.", "okt.", "nov.", "dec."],
+        "month_gen": ["janvārī", "februārī", "martā", "aprīlī", "maijā", "jūnijā", "jūlijā", "augustā", "septembrī", "oktobrī", "novembrī", "decembrī"],
+        "Month": ["Janvāris", "Februāris", "Marts", "Aprīlis", "Maijs", "Jūnijs", "Jūlījs", "Augusts", "Septembris", "Oktobris", "Novembris", "Decembris"],
+        "Month_gen": ["Janvārī", "Februārī", "Martā", "Aprīlī", "Maijā", "Jūnijā", "Jūlijā", "Augustā", "Septembrī", "Oktobrī", "Novembrī", "Decembrī"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "vakar plkst. {hour}:{minute}"], 
+        ["d", 0, 1, "šodien plkst. {hour}:{minute}"], 
+        ["d", 1, 2, "rīt plkst. {hour}:{minute}"], 
+        "{year}.g. {day}. {mon_gen}  plkst. {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "vakar, {num_hour}:{minute}"], 
+        ["d", 0, 1, "šodien, {num_hour}:{minute}"], 
+        ["d", 1, 2, "rītdien, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "vakar plkst. {hour}:{minute}:{second}"], 
+        ["d", 0, 1, "šodien plkst. {hour}:{minute}:{second}"], 
+        ["d", 1, 2, "rīt plkst. {hour}:{minute}:{second}"], 
+        " {year}.g. {day}. {mon_gen} plkst. {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}.g. {day}. {month_gen}  plkst. {hour}:{minute}"], 
+        ["y", 1, null, "{year}.g. {day}. {month_gen}  plkst. {hour}:{minute}"], 
+        ["d", null, -182, "{year}.g. {day}. {month_gen}  plkst. {hour}:{minute}"], 
+        ["d", -1, 0, "vakar plkst. {hour}:{minute}"], 
+        ["d", 0, 1, "šodien plkst. {hour}:{minute}"], 
+        ["d", 1, 2, "rīt plkst. {hour}:{minute}"], 
+        "{day}. {month_gen} plkst. {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}.g. {day}. {mon_gen} "], 
+        ["y", 1, null, "{year}.g. {day}. {mon_gen} "], 
+        ["d", null, -182, "{year}.g. {day}. {mon_gen} "], 
+        ["d", -1, 0, "vakar plkst. {hour}:{minute}"], 
+        ["d", 0, 1, "šodien plkst. {hour}:{minute}"], 
+        ["d", 1, 2, "rīt plkst. {hour}:{minute}"], 
+        "{day}. {mon_gen} plkst. {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}.g. {day}. {month_gen} "], 
+        ["y", 1, null, "{year}.g. {day}. {month_gen} "], 
+        ["d", null, -182, "{year}.g. {day}. {month_gen} "], 
+        ["d", -1, 0, "vakar"], 
+        ["d", 0, 1, "šodien"], 
+        ["d", 1, 2, "rītdien"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year}.g. {day}. {month_gen} "], 
+        ["y", 1, null, "{year}.g. {day}. {month_gen} "], 
+        ["d", null, -182, "{year}.g. {day}. {month_gen} "], 
+        ["d", -1, 0, "vakar"], 
+        ["d", 0, 1, "šodien"], 
+        ["d", 1, 2, "rītdien"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

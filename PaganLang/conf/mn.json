@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["1-р сар", "2-р сар", "3-р сар", "4-р сар", "5-р сар", "6-р сар", "7-р сар", "8-р сар", "9-р сар", "10-р сар", "11-р сар", "12-р сар"],
+        "month_gen": ["1-р сарын", "2-р сарын", "3-р сарын", "4-р сарын", "5-р сарын", "6-р сарын", "7-р сарын", "8-р сарын", "9-р сарын", "10-р сарын", "11-р сарын", "12-р сарын"],
+        "Month": ["1-р сар", "2-р сар", "3-р сар", "4-р сар", "5-р сар", "6-р сар", "7-р сар", "8-р сар", "9-р сар", "10-р сар", "11-р сар", "12-р сар"],
+        "Month_gen": ["1-р сарын", "2-р сарын", "3-р сарын", "4-р сарын", "5-р сарын", "6-р сарын", "7-р сарын", "8-р сарын", "9-р сарын", "10-р сарын", "11-р сарын", "12-р сарын"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "өчигдөр {hour}:{minute}"], 
+        ["d", 0, 1, "өнөөдөр {hour}:{minute}"], 
+        ["d", 1, 2, "маргааш {hour}:{minute}"], 
+        " {mon_gen}  {day}  {year} в {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "өчигдөр, {num_hour}:{minute} "], 
+        ["d", 0, 1, "өнөөдөр, {num_hour}:{minute} "], 
+        ["d", 1, 2, "маргааш, {num_hour}:{minute} "], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} "
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Өчигдөр {hour}:{minute}:{second}-д"], 
+        ["d", 0, 1, "Өнөөдөр {hour}:{minute}:{second}-д"], 
+        ["d", 1, 2, "Маргааш {hour}:{minute}:{second}-д"], 
+        " {mon_gen} {day} {year} , {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {month_gen}  {day}  {year}  {hour}:{minute}"], 
+        ["y", 1, null, " {month_gen}  {day}  {year}  {hour}:{minute}"], 
+        ["d", null, -182, " {month_gen}  {day}  {year}  {hour}:{minute}"], 
+        ["d", -1, 0, "өчигдөр {hour}:{minute}"], 
+        ["d", 0, 1, "өнөөдөр {hour}:{minute}"], 
+        ["d", 1, 2, "маргааш {hour}:{minute}"], 
+        " {month_gen} {day} {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {mon_gen} {day} {year}"], 
+        ["y", 1, null, " {mon_gen} {day} {year}"], 
+        ["d", null, -182, " {mon_gen} {day} {year}"], 
+        ["d", -1, 0, "өчигдөр {hour}:{minute}"], 
+        ["d", 0, 1, "өнөөдөр {hour}:{minute}"], 
+        ["d", 1, 2, "маргааш {hour}:{minute}"], 
+        " {mon_gen} {day} {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {month_gen} {day} {year}"], 
+        ["y", 1, null, " {month_gen} {day} {year}"], 
+        ["d", null, -182, " {month_gen} {day} {year}"], 
+        ["d", -1, 0, "өчигдөр"], 
+        ["d", 0, 1, "өнөөдөр"], 
+        ["d", 1, 2, "маргааш"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {month_gen} {day} {year}"], 
+        ["y", 1, null, " {month_gen} {day} {year}"], 
+        ["d", null, -182, " {month_gen} {day} {year}"], 
+        ["d", -1, 0, "өчигдөр"], 
+        ["d", 0, 1, "өнөөдөр"], 
+        ["d", 1, 2, "маргааш"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

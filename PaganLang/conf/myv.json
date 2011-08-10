@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["якш", "дав", "эйз", "чад", "пан", "ашт", "мед", "ума", "таш", "ожо", "сун", "аца"],
+        "month_gen": ["якшамковонь", "даволковонь", "эйзюрковонь", "чадыковонь", "панжиковонь", "аштемковонь", "медьковонь", "умарьковонь", "таштамковонь", "ожоковонь", "суньдерьковонь", "ацамковонь"],
+        "Month": ["Якшамков", "Даволков", "Эйзюрков", "Чадыков", "Панжиков", "Аштемков", "Медьков", "Умарьков", "Таштамков", "Ожоков", "Суньдерьков", "Ацамков"],
+        "Month_gen": ["Якшамковонь", "Даволковонь", "Эйзюрковонь", "Чадыковонь", "Панжиковонь", "Аштемковонь", "Медьковонь", "Умарьковонь", "Таштамковонь", "Ожоковонь", "Суньдерьковонь", "Ацамковонь"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "исяк {hour}:{minute} сто"], 
+        ["d", 0, 1, "течи {hour}:{minute} сто"], 
+        ["d", 1, 2, "ванды {hour}:{minute} сто"], 
+        "{year} {mon_gen}-нь {day} чистэ   {hour}:{minute} сто"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "исяк, {num_hour}:{minute}"], 
+        ["d", 0, 1, "течи, {num_hour}:{minute}"], 
+        ["d", 1, 2, "ванды, {num_hour}:{minute}"], 
+        "{mm}.{num_day}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "исяк {hour}:{minute}:{second} -сто"], 
+        ["d", 0, 1, "течи {hour}:{minute}:{second} -сто"], 
+        ["d", 1, 2, "ванды {hour}:{minute}:{second} -сто"], 
+        "{mon_gen} {day} {year} {hour}:{minute}:{second} -сто"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, null], 
+        ["y", 1, null, null], 
+        ["d", null, -182, null], 
+        ["d", -1, 0, "исяк {hour}:{minute}"], 
+        ["d", 0, 1, "течи {hour}:{minute}"], 
+        ["d", 1, 2, "ванды {hour}:{minute}"], 
+        "{month_gen} {day} {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} иестэ {mon_gen} {day} чистэ"], 
+        ["y", 1, null, "{year} иестэ {mon_gen} {day} чистэ"], 
+        ["d", null, -182, "{year} иестэ {mon_gen} {day} чистэ"], 
+        ["d", -1, 0, "исяк {hour}:{minute}"], 
+        ["d", 0, 1, "течи {hour}:{minute}"], 
+        ["d", 1, 2, "ванды {hour}:{minute}"], 
+        "{mon_gen} {day} {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} иестэ {month_gen} {day} чистэ"], 
+        ["y", 1, null, "{year} иестэ {month_gen} {day} чистэ"], 
+        ["d", null, -182, "{year} иестэ {month_gen} {day} чистэ"], 
+        ["d", -1, 0, "исяк"], 
+        ["d", 0, 1, "течи"], 
+        ["d", 1, 2, "ванды"], 
+        "{month_gen} {day}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{year} иестэ {month_gen} {day} чистэ"], 
+        ["y", 1, null, "{year} иестэ {month_gen} {day} чистэ"], 
+        ["d", null, -182, "{year} иестэ {month_gen} {day} чистэ"], 
+        ["d", -1, 0, "исяк"], 
+        ["d", 0, 1, "течи"], 
+        ["d", 1, 2, "ванды"], 
+        "{month_gen} {day}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Jan.", "Fev.", "Mar.", "Abr.", "Mai.", "Jun.", "Jul.", "Ago.", "Set.", "Out.", "Nov.", "Dez."],
+        "month_gen": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Jullho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+        "Month": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+        "Month_gen": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ontem às {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "hoje às {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "amanhã às {hour}:{minute} {am_pm}"], 
+        "{day} de {mon_gen} de {year} às {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ontem, {num_hour}:{minute}"], 
+        ["d", 0, 1, "hoje, {num_hour}:{minute}"], 
+        ["d", 1, 2, "amanhã, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "ontem às {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "hoje às {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "amanhã às {hour}:{minute}:{second} {am_pm}"], 
+        "às {hour}:{minute}:{second} {am_pm} em {day} de {mon_gen} de {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "em {day} de {month_gen} de {year} às {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, "em {day} de {month_gen} de {year} às {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, "em {day} de {month_gen} de {year} às {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "ontem às {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "hoje às {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "amanhã às {hour}:{minute} {am_pm}"], 
+        "{day} de {month_gen} às {hour}:{minute} {am_pm}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "em {day} de {mon_gen} de {year}"], 
+        ["y", 1, null, "em {day} de {mon_gen} de {year}"], 
+        ["d", null, -182, "em {day} de {mon_gen} de {year}"], 
+        ["d", -1, 0, "ontem às {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "hoje às {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "amanhã às {hour}:{minute} {am_pm}"], 
+        "{day} de {mon_gen} às {hour}:{minute} {am_pm}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "em {day} de {month_gen} de {year}"], 
+        ["y", 1, null, "em {day} de {month_gen} de {year}"], 
+        ["d", null, -182, "em {day} de {month_gen} de {year}"], 
+        ["d", -1, 0, "ontem"], 
+        ["d", 0, 1, "hoje"], 
+        ["d", 1, 2, "amanhã"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "em {day} de {month_gen} de {year}"], 
+        ["y", 1, null, "em {day} de {month_gen} de {year}"], 
+        ["d", null, -182, "em {day} de {month_gen} de {year}"], 
+        ["d", -1, 0, "ontem"], 
+        ["d", 0, 1, "hoje"], 
+        ["d", 1, 2, "amanhã"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

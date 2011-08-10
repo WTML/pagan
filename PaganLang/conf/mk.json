@@ -1,0 +1,160 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["Јан.", "Фев.", "Мар.", "Апр.", "Мај", "Јун.", "Јул.", "Авг.", "Сеп.", "Окт.", "Ное.", "Дек."],
+        "month_gen": ["Јануари", "Февруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"],
+        "Month": ["Јануари", "Февруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"],
+        "Month_gen": ["Јануари", "Февруари", "Март", "Април", "Мај", "Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "вчера во {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "денес во {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "утре во {hour}:{minute} {am_pm}"], 
+        "во {hour}:{minute} {am_pm} на {mon_gen} {day}, {year}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Вчера, {num_hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "Денес, {num_hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "Утре, {num_hour}:{minute} {am_pm}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute} {am_pm}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "вчера во {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 0, 1, "денес во {hour}:{minute}:{second} {am_pm}"], 
+        ["d", 1, 2, "утре во {hour}:{minute}:{second} {am_pm}"], 
+        "во {hour}:{minute}:{second} {am_pm} на {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "на {month_gen} {day}, {year} во {hour}:{minute} {am_pm}"], 
+        ["y", 1, null, "на {month_gen} {day}, {year} во {hour}:{minute} {am_pm}"], 
+        ["d", null, -182, "на {month_gen} {day}, {year} во {hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "вчера во {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "денес во {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "утре во {hour}:{minute} {am_pm}"], 
+        "во {hour}:{minute} {am_pm} на {month_gen} {day}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "на {mon_gen} {day}, {year}"], 
+        ["y", 1, null, "на {mon_gen} {day}, {year}"], 
+        ["d", null, -182, "на {mon_gen} {day}, {year}"], 
+        ["d", -1, 0, "вчера во {hour}:{minute} {am_pm}"], 
+        ["d", 0, 1, "денес во {hour}:{minute} {am_pm}"], 
+        ["d", 1, 2, "утре во {hour}:{minute} {am_pm}"], 
+        "во {hour}:{minute} {am_pm} на {mon_gen} {day}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "на {month_gen} {day}, {year}"], 
+        ["y", 1, null, "на {month_gen} {day}, {year}"], 
+        ["d", null, -182, "на {month_gen} {day}, {year}"], 
+        ["d", -1, 0, "вчера"], 
+        ["d", 0, 1, "денес"], 
+        ["d", 1, 2, "утре"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "на {month_gen} {day}, {year}"], 
+        ["y", 1, null, "на {month_gen} {day}, {year}"], 
+        ["d", null, -182, "на {month_gen} {day}, {year}"], 
+        ["d", -1, 0, "вчера"], 
+        ["d", 0, 1, "денес"], 
+        ["d", 1, 2, "утре"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 100,
+          "values": [11, 12, 13, 14],
+          "variant": 3
+        }, 
+        {
+          "mod": 10,
+          "values": [1],
+          "variant": 1
+        }, 
+        {
+          "mod": 10,
+          "values": [2, 3, 4],
+          "variant": 2
+        }
+      ],
+      "int": 3,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "RTL": 1,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر"],
+        "month_gen": ["جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر"],
+        "Month": ["جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر"],
+        "Month_gen": ["جنوری", "فروری", "مارچ", "اپریل", "مئی", "جون", "جولائی", "اگست", "ستمبر", "اکتوبر", "نومبر", "دسمبر"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "کل نوں {hour}:{minute} {am_pm} بجے"], 
+        ["d", 0, 1, "اج {hour}:{minute} {am_pm} بجے"], 
+        ["d", 1, 2, "کل نو {hour}:{minute} {am_pm} بجے"], 
+        "{hour}:{minute} {am_pm} بجے {mon_gen} {day}, {year} نوں"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "کل, {num_hour}:{minute} بجے"], 
+        ["d", 0, 1, "اج, {num_hour}:{minute} بجے"], 
+        ["d", 1, 2, "کل نوں, {num_hour}:{minute} بجے"], 
+        "{num_day}.{mm}.{short_year}نوں {num_hour}:{minute} بجے"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "بجے {hour}:{minute}:{second} {am_pm} کل نوں"], 
+        ["d", 0, 1, "بجے {hour}:{minute}:{second} {am_pm} اج"], 
+        ["d", 1, 2, "بجے {hour}:{minute}:{second} {am_pm} کل نوں"], 
+        "بجے {hour}:{minute}:{second} {am_pm} نوں {mon_gen} {day}, {year}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, " {month_gen} ء{day}, {year}   ء نوں{hour}:{minute} {am_pm}"], 
+        ["y", 1, null, " {month_gen} ء{day}, {year}   ء نوں{hour}:{minute} {am_pm}"], 
+        ["d", null, -182, " {month_gen} ء{day}, {year}   ء نوں{hour}:{minute} {am_pm}"], 
+        ["d", -1, 0, "کل نوں {hour}:{minute} {am_pm} بجے"], 
+        ["d", 0, 1, "اج {hour}:{minute} {am_pm} بجے"], 
+        ["d", 1, 2, "کل نوں {hour}:{minute} {am_pm} بجے"], 
+        "{hour}:{minute} {am_pm}  بجے  {day} {month_gen} نوں"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {mon_gen} ،{year} نوں"], 
+        ["y", 1, null, "{day} {mon_gen} ،{year} نوں"], 
+        ["d", null, -182, "{day} {mon_gen} ،{year} نوں"], 
+        ["d", -1, 0, "کل نوں {hour}:{minute} {am_pm} بجے"], 
+        ["d", 0, 1, "اج {hour}:{minute} {am_pm} بجے"], 
+        ["d", 1, 2, "کل نوں {hour}:{minute} {am_pm} بجے"], 
+        "{hour}:{minute} {am_pm}  بجے  {day} {mon_gen} نوں"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} ،{year} نوں"], 
+        ["y", 1, null, "{day} {month_gen} ،{year} نوں"], 
+        ["d", null, -182, "{day} {month_gen} ،{year} نوں"], 
+        ["d", -1, 0, "کل نوں"], 
+        ["d", 0, 1, "اج"], 
+        ["d", 1, 2, "کل"], 
+        "{month_gen} {day}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} ،{year} نوں"], 
+        ["y", 1, null, "{day} {month_gen} ،{year} نوں"], 
+        ["d", null, -182, "{day} {month_gen} ،{year} نوں"], 
+        ["d", -1, 0, "کل نوں"], 
+        ["d", 0, 1, "اج"], 
+        ["d", 1, 2, "کل"], 
+        "{month_gen} {day}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

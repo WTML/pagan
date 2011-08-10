@@ -1,0 +1,20 @@
+{
+  "description": "VK Checker",
+  "background_page": "pagan_back.html",
+  "browser_action": {
+    //"popup":"pagan_popup.html",
+    "default_icon": "images/logo.png",
+    "default_title": ""
+  },
+  "icons": { 
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png" 
+  },
+  "options_page": "pagan_options.html",
+  "name": "Pagan",
+  "permissions": [ "tabs", "http://*/*", "https://*/*", "http://kuzya.org/pagan" ],
+  "default_locale": "en",
+  "version": "0.1"
+}

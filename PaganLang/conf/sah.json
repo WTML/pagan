@@ -1,0 +1,150 @@
+{
+  "RTL": 0,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["тохс", "олу", "кул", "муус", "ыам", "бэс", "от", "атыр", "бал", "алт", "сэт", "ахс"],
+        "month_gen": ["тохсунньу ыйыгар", "олунньу ыйыгар", "кулун тутар ыйыгар", "муус устар ыйыгар", "ыам ыйыгар", "бэс ыйыгар", "от ыйыгар", "атырдьах ыйыгар", "балаҕан ыйыгар", "алтынньы ыйыгар", "сэтинньи ыйыгар", "ахсынньы ыйыгар"],
+        "Month": ["Тохсунньу", "Олунньу", "Кулун тутар", "Муус устар", "Ыам ыйа", "Бэс ыйа", "От ыйа", "Атырдьах ыйа", "Бала5ан ыйа", "Алтынньы", "Сэтинньи", "Ахсынньы"],
+        "Month_gen": ["Тохсунньу", "Олунньу", "Кулун тутар", "Муус устар", "Ыам ыйа", "Бэс ыйа", "От ыйа", "Атырдьах ыйа", "Бала5ан ыйа", "Алтынньы", "Сэтинньи", "Тохсунньу"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "Бэ5эhээ {hour}:{minute} са5ана"], 
+        ["d", 0, 1, "Бүгүн {hour}:{minute} са5ана"], 
+        ["d", 1, 2, "Сарсын {hour}:{minute} са5ана"], 
+        "{day} {mon_gen} {year}  {hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year} {hour}:{minute} суруйбут"], 
+        ["y", 1, null, "{day} {month_gen} {year} {hour}:{minute} суруйбут"], 
+        ["d", null, -182, "{day} {month_gen} {year} {hour}:{minute} суруйбут"], 
+        ["d", -1, 0, "бэҕэһээ {hour}:{minute}"], 
+        ["d", 0, 1, "бүгүн {hour}:{minute}"], 
+        ["d", 1, 2, "сарсын {hour}:{minute}"], 
+        "{day} {month_gen} в {hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {mon_gen} {year}"], 
+        ["y", 1, null, "{day} {mon_gen} {year}"], 
+        ["d", null, -182, "{day} {mon_gen} {year}"], 
+        ["d", -1, 0, "бэҕэһээ {hour}:{minute}"], 
+        ["d", 0, 1, "бүгүн {hour}:{minute}"], 
+        ["d", 1, 2, "сарсын {hour}:{minute}"], 
+        "{day} {mon_gen} в {hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, null], 
+        ["d", 0, 1, null], 
+        ["d", 1, 2, null], 
+        null
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+<script src="zepto/zepto.min.js"></script>
+<script src="PaganLang/PaganLang.js"></script>
+<script src="pagan_lib.js"></script>
+<script>
+var user = null;
+
+$(document).ready(function() {
+  user = storage('user');
+  var data = user.data();
+  if (data.id) {
+    $('#login_form').hide();
+    PaganLib.format("Привет, {0:fname}!");
+    $('#status').text(data.count);
+  } else {
+    $('#login_form').show();
+  }
+});
+
+
+//chrome.extension.sendRequest([{action: "get_user"}], function(response) {
+//});
+</script>
+</head>
+<body>
+<div id="login_form">
+<button id="" onclick="window.open('http://kuzya.org/pagan/auth', '', 'width=350,height=250');">Войти</button>
+</div>
+<div id="status">
+</div>
+</body>
+</html>

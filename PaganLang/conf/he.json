@@ -1,0 +1,150 @@
+{
+  "RTL": 1,
+  "parent_code": "ru",
+  "config": {
+    "time_config": {
+      "type": "time",
+      "24H": 1,
+      "AM": "a.m.",
+      "PM": "p.m.",
+      "year_offset": 0,
+      "months": {
+        "mon_gen": ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"],
+        "month_gen": ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"],
+        "Month": ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"],
+        "Month_gen": ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"]
+      }
+    }
+  },
+  "rules": {
+    "date_year_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "אתמול ב-{hour}:{minute}"], 
+        ["d", 0, 1, "היום ב-{hour}:{minute}"], 
+        ["d", 1, 2, "מחר ב-{hour}:{minute}"], 
+        "{day} {mon_gen} {year} ב-{hour}:{minute}"
+      ]
+    },
+    "num_date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "%s אליל, {num_hour}:{minute}"], 
+        ["d", 0, 1, "%s אליל, {num_hour}:{minute}"], 
+        ["d", 1, 2, "מחר, {num_hour}:{minute}"], 
+        "{num_day}.{mm}.{short_year} {num_hour}:{minute}"
+      ]
+    },
+    "date_time_sec": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["d", -1, 0, "אתמול ב {hour}:{minute}:{second}‎"], 
+        ["d", 0, 1, "היום ב  {hour}:{minute}:{second}‎"], 
+        ["d", 1, 2, "מחר ב {hour}:{minute}:{second}‎"], 
+        "{day} {mon_gen} {year} ב- {hour}:{minute}:{second}"
+      ]
+    },
+    "long_date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year} ב-{hour}:{minute}"], 
+        ["y", 1, null, "{day} {month_gen} {year} ב-{hour}:{minute}"], 
+        ["d", null, -182, "{day} {month_gen} {year} ב-{hour}:{minute}"], 
+        ["d", -1, 0, "אתמול ב-{hour}:{minute}"], 
+        ["d", 0, 1, "היום ב-{hour}:{minute}"], 
+        ["d", 1, 2, "מחר ב-{hour}:{minute}"], 
+        "{day} {month_gen} ב-{hour}:{minute}"
+      ]
+    },
+    "date_time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {mon_gen} {year}"], 
+        ["y", 1, null, "{day} {mon_gen} {year}"], 
+        ["d", null, -182, "{day} {mon_gen} {year}"], 
+        ["d", -1, 0, "אתמול ב-{hour}:{minute}"], 
+        ["d", 0, 1, "היום ב-{hour}:{minute}"], 
+        ["d", 1, 2, "מחר ב-{hour}:{minute}"], 
+        "{day} {mon_gen} ב-{hour}:{minute}"
+      ]
+    },
+    "date": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "אתמול"], 
+        ["d", 0, 1, "היום"], 
+        ["d", 1, 2, "מחר"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "time": {
+      "conf": "time_config",
+      "type": "time",
+      "patterns": [
+        ["y", null, 0, "{day} {month_gen} {year}"], 
+        ["y", 1, null, "{day} {month_gen} {year}"], 
+        ["d", null, -182, "{day} {month_gen} {year}"], 
+        ["d", -1, 0, "אתמול"], 
+        ["d", 0, 1, "היום"], 
+        ["d", 1, 2, "מחר"], 
+        "{day} {month_gen}"
+      ]
+    },
+    "num": {
+      "type": "numeric",
+      "delimiter": ",",
+      "decimal": ".",
+      "variants": [
+        {
+          "mod": 0,
+          "values": [1],
+          "variant": 1
+        }
+      ],
+      "int": 2,
+      "float": 2
+    },
+    "fname": {
+      "type": "flex",
+      "from": "{current.first_name}"
+    },
+    "fnname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname}"
+    },
+    "fullname": {
+      "type": "flex",
+      "from": "{current.first_name} {current.nickname} {current.last_name}"
+    },
+    "lname": {
+      "type": "flex",
+      "from": "{current.last_name}"
+    },
+    "name": {
+      "type": "flex",
+      "from": "{current.first_name} {current.last_name}"
+    },
+    "sex": {
+      "type": "switch",
+      "variants": [
+        {
+          "cond": "sex=1",
+          "variant": 1
+        }, 
+        {
+          "cond": "sex<>1",
+          "variant": 0
+        }
+      ]
+    }
+  }
+}
